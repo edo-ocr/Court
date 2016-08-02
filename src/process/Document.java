@@ -641,7 +641,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("刑事裁定书.{0,5}|刑事判决书|刑事附带民事.{1,3}")) {
+					if (txt.matches("刑事裁定书（准许.{0,5}|刑事判决书|刑事附带民事.{1,3}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return OriginalJudgmentDocument;
 					    }
@@ -649,7 +649,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("宣判笔录、判后释法笔录")) {
+					if (txt.matches("宣判笔录.{2,6}|判后释法笔录")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return SentencingNotes;
 					    }
@@ -657,7 +657,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("司法建议书")) {
+					if (txt.matches("司法建议书.{2,7}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return JudicialRecommendations;
 					    }
@@ -665,7 +665,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("上抗诉案件移送函（稿）")) {
+					if (txt.matches("报送上（抗.{0,4}件移送.{2,6}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return ReferTheCaseToTheProtestLetter;
 					    }
@@ -681,7 +681,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("执行死刑命令")) {
+					if (txt.matches(".{1,3}执行死刑命令.{0,4}死刑.{1,3}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return ExecutionOrder;
 					    }
@@ -697,7 +697,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("死刑执行前验明正身笔录")) {
+					if (txt.matches("验明正身笔录.{0,2}死刑用.{0,2}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return NotesPositivelyIdentified;
 					    }
@@ -705,7 +705,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("执行死刑笔录")) {
+					if (txt.matches("执行死刑笔录.{0,2}刑事.{0,3}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return NotesExecutions;
 					    }
@@ -721,7 +721,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("死刑执行前后照片")) {
+					if (txt.matches("死刑罪犯照片")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return ExecutionsBeforeAndAfterPhotos;
 					    }
@@ -729,7 +729,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("死刑犯家属领取骨灰或尸体通知")) {
+					if (txt.matches("领取骨灰通知书.{3,9}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return CondemnedFamiliesReceiveAshes;
 					    }
@@ -745,7 +745,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("执行通知书")) {
+					if (txt.matches("[执行|释放]通知书.{3,10}用.?|[减刑|假释]执行通知书.*用.?")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return EnforcementNotice;
 					    }
@@ -753,7 +753,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("赃物、证物移送清单及处理手续材料")) {
+					if (txt.matches("发还财物品清单.{1,6}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return evidenceHandlingProceduresAndMaterialTransferList;
 					    }
@@ -785,7 +785,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("举证通知书、送达地址确认书和电子送达确认书")) {
+					if (txt.matches("举证通知书|[送达地址|电子送达]确认书")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return EvidenceAnoticeInTheAddressConfirmation;
 					    }
@@ -793,7 +793,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("诉讼保全担保书、诉讼保全裁定书正本、鉴定委托书、鉴定结论")) {
+					if (txt.matches("诉讼保全.{0,2}书.{0,2}|鉴定委托书|鉴定结论|通知书.{2,5}重新.{1,3}申请.{0,2}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return LitigationPreservationGuarantee;
 					    }
@@ -801,7 +801,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("变更举证期限通知书")) {
+					if (txt.matches("通知书.{2,5}延长.{2,4}申请.{0,2}|通知书.*当事人.*第三人.*|通知书.{3,9}举证期限.{0,3}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return EvidenceChangeNoticePeriod;
 					    }
@@ -809,7 +809,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("变更普通程序审批表")) {
+					if (txt.matches("申请.*程序.{2,4}|转换程序通知书|民事.{1,6}程序.{1,3}程序.{1,2}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return ChangeTheOrdinaryProcedureForApproval;
 					    }
@@ -817,7 +817,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("证物处理手续")) {
+					if (txt.matches("证物处理手续.{1,3}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return EvidenceHandlingProcedures;
 					    }
@@ -825,7 +825,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("受理案件通知书")) {
+					if (txt.matches("受理通知书")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return CaseAcceptanceNotice;
 					    }
@@ -833,7 +833,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("执行裁定")) {
+					if (txt.matches(".*[不|上|准].*裁定书")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return ImplementationOfTheDecision;
 					    }
@@ -846,7 +846,7 @@ public class Document implements FileCode {
 					        return PropertyCluesAndReports;
 					    }
 //					    return PropertyCluesAndReportsFront;
-					//}
+//					}
 					            
 
 					if (txt.matches("执行进程告知书")) {
@@ -857,7 +857,12 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("评估、拍卖等财产变现手续")) {
+					if (txt.matches("由法院.*有关财产.{4,8}|.{1,3}拍卖措施.{1,3}|.*成交确认.{0,4}"
+							+ "|.*变卖措施.{1,4}|.*以物抵债.{1,5}|鉴定委托书|价格评估委托书|拍卖.{0,3}卖.*委托书"
+							+ "|拍卖通知书|查封公告|查封.{4,8}财产清单|拍卖公告|.*迁出房屋.{0,2}退出土地.{0,3}"
+							+ "|搜查令|.{0,3}交出财物.{0,6}|.{1,5}生效法律.{1,4}行为.{0,6}"
+							+ "|折价赔偿.*财产.{1,5}|代为完成.*"
+							+ "|.{1,3}追回财物.{1,6}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return auctionProceduresForRealizationOfProperty;
 					    }
@@ -865,7 +870,8 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("处理执行争议书")) {
+					if (txt.matches(".{0,7}执行争议.*|.*利害关系.*|案外人.*|复议执行.{1,4}"
+							+ "|督促执行令|.*下级法院.*|.*暂缓执行.*|.*非诉法律文书.*")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return ProcessingExecutionDisputeBooks;
 					    }
@@ -873,7 +879,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("执行款过户手续")) {
+					if (txt.matches("执行款过户手续.{2}|领款审批表")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return ExecutiveShallTransferProcedures;
 					    }
@@ -881,7 +887,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("执行回转")) {
+					if (txt.matches("执行回转.{1}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return Swivel;
 					    }
@@ -889,7 +895,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("结案通知书")) {
+					if (txt.matches("结案.{0,2}通知.{0,2}书")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return NotificationClosed;
 					    }
