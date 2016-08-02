@@ -340,8 +340,8 @@ public class Document implements FileCode {
 							+ "|执业证.*|.{0,4}居民户口簿.*|.?推荐信.?|[授投]权书|.{0,8}法人证书|.*度.{0,3}核备.*"
 							+ "|.{0,3}注册号[\\d]{7,18}.{0,3}|.{0,3}登记项目|.{2,6}证[明朋]|.?组织.构代码证.*|中华人民共和.?国.?"
 							+ "|律.{2,5}所[^信]?函.{0,5}第.{1,6}号|.{2,8}律师事务所|营.[执捌]照|.*统一社会信用代.*"
-							+ "|亍聿师事.{1,4}所函|律师事.{1,3}函|授权委.{2,6}|.{0,4}身[份伯]证明.?|.*一[社祉]会信用代.*"
-							+ "|.{1,3}身.?号码[\\d]{7,}|.明|法人代表.?[证正]明.{0,6}|.?授.{1,3}"
+							+ "|亍聿师事.{1,4}所函|律师事.{1,3}函|授[权衩杈]委.{2,6}|.{0,4}身[份伯]证明.?|.*一[社祉]会信用代.*"
+							+ "|.{1,3}身.?号码[\\d]{7,}|.明|法人(代表)?.?[证正]明.{0,6}|.?授.{1,3}"
 							+ "|律师.?务所名称.{2,9}")) {
 						return identification;
 					}
@@ -407,7 +407,7 @@ public class Document implements FileCode {
 						}
 						return "33a";
 					}
-					if (txt.matches(".{0,8}判决书")) {
+					if (txt.matches(".{0,8}判决书|.*裁.*定")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return "19";
 						}
@@ -495,7 +495,8 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("案件.{1,5}流程管理.{1,3}|.*立案登记表.{1,6}|立案审批表")) {
+					if (txt.matches(".{1,4}案件.{1,5}.程管理.{1,3}|.*立案登记表.{1,6}|立案审批表|.*案件审判流程.*"
+							+ "|.*立案.*理.*息")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return CaseFlow;
 					    }
@@ -511,7 +512,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("[立案|应诉]通知书.{1,5}|.*补充材料通知书.{1,5}")) {
+					if (txt.matches("[立案|应诉|应拆].知书.{1,5}|.*补充材料通知书.{1,5}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return FilingNoticeOfAcceptance;
 					    }
@@ -543,7 +544,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("司法公开告知书")) {
+					if (txt.matches("司法公.{0,2}知书|.*监督.*|诉讼[冈风凤]险.{0,5}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return PublicationOfThisBookJustice;
 					    }
@@ -609,7 +610,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("出庭通知书.{7}|.{1,4}员出席法庭通知书")) {
+					if (txt.matches("[出开]庭通知书.{7}|.{1,4}员出.?法庭通知书|.*告知书|传[票禀]|.*合议庭.*成.*员.*通知书")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return NoticeOfTheHearing;
 					    }
@@ -617,7 +618,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("公告.{3,8}")) {
+					if (txt.matches(".*公告.{3,8}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return CourtPapersAnnouncement;
 					    }
@@ -641,7 +642,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("刑事裁定书（准许.{0,5}|刑事判决书|刑事附带民事.{1,3}")) {
+					if (txt.matches("刑事裁定书（准许.{0,5}|刑[辜事]判决书|刑事附带民事.{1,3}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return OriginalJudgmentDocument;
 					    }
@@ -649,7 +650,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("宣判笔录.{2,6}|判后释法笔录")) {
+					if (txt.matches("宣判笔录|.判笔.{2,6}|判后释法笔录")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return SentencingNotes;
 					    }
@@ -785,7 +786,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("举证通知书|[送达地址|电子送达]确认书")) {
+					if (txt.matches("举证通知书|[送达地址|电子送达]确认书|当事.*确认书")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return EvidenceAnoticeInTheAddressConfirmation;
 					    }
@@ -825,7 +826,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("受理通知书")) {
+					if (txt.matches("受.?[里理]通知书|驳回申诉")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return CaseAcceptanceNotice;
 					    }
@@ -833,7 +834,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches(".*[不|上|准].*裁定书")) {
+					if (txt.matches(".*[不上准].*裁定书")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return ImplementationOfTheDecision;
 					    }
@@ -871,7 +872,7 @@ public class Document implements FileCode {
 					            
 
 					if (txt.matches(".{0,7}执行争议.*|.*利害关系.*|案外人.*|复议执行.{1,4}"
-							+ "|督促执行令|.*下级法院.*|.*暂缓执行.*|.*非诉法律文书.*")) {
+							+ "|督促执行令|.*下级法院.*|.*暂缓执行.*|.*非诉法律文书.*|.*执行裁定.*")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return ProcessingExecutionDisputeBooks;
 					    }
