@@ -561,7 +561,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("查封.{.3,7}财产.{1,7}|查询存款函.{1,6}|诉讼保全.{0,3}")) {
+					if (txt.matches("查封.{3,7}财产.{1,7}|查询存款函.{1,6}|诉讼保全.{0,3}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return LitigationHolds;
 					    }
