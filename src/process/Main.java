@@ -269,6 +269,263 @@ public class Main implements FileCode{
 				writeFile(args[1], proofOfService);
 				System.out.println(file.getName() + "——送达回证");
 				break;
+//----------------------------------------------------------------
+			case exchangeOfNotes:
+			    writeFile(args[1], exchangeOfNotes);
+			    System.out.println(file.getName() + "——证据交换笔录");
+			    break;
+			            
+			case CaseFlow:
+			    writeFile(args[1], CaseFlow);
+			    System.out.println(file.getName() + "——案件流程信息表");
+			    break;
+			            
+			case NoticeOfChangeInJurisdiction:
+			    writeFile(args[1], NoticeOfChangeInJurisdiction);
+			    System.out.println(file.getName() + "——改变管辖通知书");
+			    break;
+			            
+			case FilingNoticeOfAcceptance:
+			    writeFile(args[1], FilingNoticeOfAcceptance);
+			    System.out.println(file.getName() + "——立案受理通知书");
+			    break;
+			            
+			case MarkingNotice:
+			    writeFile(args[1], MarkingNotice);
+			    System.out.println(file.getName() + "——阅卷通知书");
+			    break;
+			            
+			case SimpleProceduresApply:
+			    writeFile(args[1], SimpleProceduresApply);
+			    System.out.println(file.getName() + "——简易程序适用");
+			    break;
+			            
+			case ServiceOfTheIndictment:
+			    writeFile(args[1], ServiceOfTheIndictment);
+			    System.out.println(file.getName() + "——送达起诉书笔录");
+			    break;
+			            
+			case PublicationOfThisBookJustice:
+			    writeFile(args[1], PublicationOfThisBookJustice);
+			    System.out.println(file.getName() + "——司法公开告知书");
+			    break;
+			            
+			case CompulsoryMeasuresChangeDecision:
+			    writeFile(args[1], CompulsoryMeasuresChangeDecision);
+			    System.out.println(file.getName() + "——变更强制措施决定及对家属通知书");
+			    break;
+			            
+			case LitigationHolds:
+			    writeFile(args[1], LitigationHolds);
+			    System.out.println(file.getName() + "——诉讼保全裁定书、搜查、勘验、查封笔录及查封、扣押物品清单");
+			    break;
+			            
+			case PermitTheTransferOfEvidence:
+			    writeFile(args[1], PermitTheTransferOfEvidence);
+			    System.out.println(file.getName() + "——当事人、律师调取证据申请、准许调取证据令及调取的证据材料");
+			    break;
+			            
+			case ExpertConclusions:
+			    writeFile(args[1], ExpertConclusions);
+			    System.out.println(file.getName() + "——赃、证物委托鉴定书及鉴定结论");
+			    break;
+			            
+			case RegistrationFormAndCheckMaterial:
+			    writeFile(args[1], RegistrationFormAndCheckMaterial);
+			    System.out.println(file.getName() + "——被告人坦白交代、揭发问题登记表及查证材料");
+			    break;
+			            
+			case RestrictExitDecision:
+			    writeFile(args[1], RestrictExitDecision);
+			    System.out.println(file.getName() + "——限制出境决定书");
+			    break;
+			            
+			case WithdrawalByPetition:
+			    writeFile(args[1], WithdrawalByPetition);
+			    System.out.println(file.getName() + "——申请回避及处理决定");
+			    break;
+			            
+			case NoticeOfTheHearing:
+			    writeFile(args[1], NoticeOfTheHearing);
+			    System.out.println(file.getName() + "——开庭通知");
+			    break;
+			            
+			case CourtPapersAnnouncement:
+			    writeFile(args[1], CourtPapersAnnouncement);
+			    System.out.println(file.getName() + "——开庭公告底稿");
+			    break;
+			            
+			case SentencingRecommendation:
+			    writeFile(args[1], SentencingRecommendation);
+			    System.out.println(file.getName() + "——量刑建议书");
+			    break;
+			            
+			case PrejudiceCriminalProceedingsDetention:
+			    writeFile(args[1], PrejudiceCriminalProceedingsDetention);
+			    System.out.println(file.getName() + "——妨害刑事诉讼拘留罚款决定");
+			    break;
+			            
+			case OriginalJudgmentDocument:
+			    writeFile(args[1], OriginalJudgmentDocument);
+			    System.out.println(file.getName() + "——裁判文书正本");
+			    break;
+			            
+			case SentencingNotes:
+			    writeFile(args[1], SentencingNotes);
+			    System.out.println(file.getName() + "——宣判笔录、判后释法笔录");
+			    break;
+			            
+			case JudicialRecommendations:
+			    writeFile(args[1], JudicialRecommendations);
+			    System.out.println(file.getName() + "——司法建议书");
+			    break;
+			            
+			case ReferTheCaseToTheProtestLetter:
+			    writeFile(args[1], ReferTheCaseToTheProtestLetter);
+			    System.out.println(file.getName() + "——上抗诉案件移送函（稿）");
+			    break;
+			            
+			case UnwindingLetter:
+			    writeFile(args[1], UnwindingLetter);
+			    System.out.println(file.getName() + "——退卷函");
+			    break;
+			            
+			case ExecutionOrder:
+			    writeFile(args[1], ExecutionOrder);
+			    System.out.println(file.getName() + "——执行死刑命令");
+			    break;
+			            
+			case AMoratoriumOnExecutions:
+			    writeFile(args[1], AMoratoriumOnExecutions);
+			    System.out.println(file.getName() + "——暂停执行死刑的报告及批复");
+			    break;
+			            
+			case NotesPositivelyIdentified:
+			    writeFile(args[1], NotesPositivelyIdentified);
+			    System.out.println(file.getName() + "——死刑执行前验明正身笔录");
+			    break;
+			            
+			case NotesExecutions:
+			    writeFile(args[1], NotesExecutions);
+			    System.out.println(file.getName() + "——执行死刑笔录");
+			    break;
+			            
+			case ExecutionReport:
+			    writeFile(args[1], ExecutionReport);
+			    System.out.println(file.getName() + "——执行死刑报告");
+			    break;
+			            
+			case ExecutionsBeforeAndAfterPhotos:
+			    writeFile(args[1], ExecutionsBeforeAndAfterPhotos);
+			    System.out.println(file.getName() + "——死刑执行前后照片");
+			    break;
+			            
+			case CondemnedFamiliesReceiveAshes:
+			    writeFile(args[1], CondemnedFamiliesReceiveAshes);
+			    System.out.println(file.getName() + "——死刑犯家属领取骨灰或尸体通知");
+			    break;
+			            
+			case CarcassDisposalRegistrationForm:
+			    writeFile(args[1], CarcassDisposalRegistrationForm);
+			    System.out.println(file.getName() + "——尸体处理登记表");
+			    break;
+			            
+			case EnforcementNotice:
+			    writeFile(args[1], EnforcementNotice);
+			    System.out.println(file.getName() + "——执行通知书");
+			    break;
+			            
+			case evidenceHandlingProceduresAndMaterialTransferList:
+			    writeFile(args[1], evidenceHandlingProceduresAndMaterialTransferList);
+			    System.out.println(file.getName() + "——赃物、证物移送清单及处理手续材料");
+			    break;
+			            
+			case CommutationParoleRuling:
+			    writeFile(args[1], CommutationParoleRuling);
+			    System.out.println(file.getName() + "——减刑、假释裁定书");
+			    break;
+			            
+			case RemarksTable:
+			    writeFile(args[1], RemarksTable);
+			    System.out.println(file.getName() + "——备考表");
+			    break;
+			            
+			case Juanneimulu:
+			    writeFile(args[1], Juanneimulu);
+			    System.out.println(file.getName() + "——卷内目录");
+			    break;
+			            
+			case EvidenceAnoticeInTheAddressConfirmation:
+			    writeFile(args[1], EvidenceAnoticeInTheAddressConfirmation);
+			    System.out.println(file.getName() + "——举证通知书、送达地址确认书和电子送达确认书");
+			    break;
+			            
+			case LitigationPreservationGuarantee:
+			    writeFile(args[1], LitigationPreservationGuarantee);
+			    System.out.println(file.getName() + "——诉讼保全担保书、诉讼保全裁定书正本、鉴定委托书、鉴定结论");
+			    break;
+			            
+			case EvidenceChangeNoticePeriod:
+			    writeFile(args[1], EvidenceChangeNoticePeriod);
+			    System.out.println(file.getName() + "——变更举证期限通知书");
+			    break;
+			            
+			case ChangeTheOrdinaryProcedureForApproval:
+			    writeFile(args[1], ChangeTheOrdinaryProcedureForApproval);
+			    System.out.println(file.getName() + "——变更普通程序审批表");
+			    break;
+			            
+			case EvidenceHandlingProcedures:
+			    writeFile(args[1], EvidenceHandlingProcedures);
+			    System.out.println(file.getName() + "——证物处理手续");
+			    break;
+			            
+			case CaseAcceptanceNotice:
+			    writeFile(args[1], CaseAcceptanceNotice);
+			    System.out.println(file.getName() + "——受理案件通知书");
+			    break;
+			            
+			case ImplementationOfTheDecision:
+			    writeFile(args[1], ImplementationOfTheDecision);
+			    System.out.println(file.getName() + "——执行裁定");
+			    break;
+			            
+			case PropertyCluesAndReports:
+			    writeFile(args[1], PropertyCluesAndReports);
+			    System.out.println(file.getName() + "——财产线索和报告");
+			    break;
+			            
+			case TheImplementationProcessOfThisBook:
+			    writeFile(args[1], TheImplementationProcessOfThisBook);
+			    System.out.println(file.getName() + "——执行进程告知书");
+			    break;
+			            
+			case auctionProceduresForRealizationOfProperty:
+			    writeFile(args[1], auctionProceduresForRealizationOfProperty);
+			    System.out.println(file.getName() + "——评估、拍卖等财产变现手续");
+			    break;
+			            
+			case ProcessingExecutionDisputeBooks:
+			    writeFile(args[1], ProcessingExecutionDisputeBooks);
+			    System.out.println(file.getName() + "——处理执行争议书");
+			    break;
+			            
+			case ExecutiveShallTransferProcedures:
+			    writeFile(args[1], ExecutiveShallTransferProcedures);
+			    System.out.println(file.getName() + "——执行款过户手续");
+			    break;
+			            
+			case Swivel:
+			    writeFile(args[1], Swivel);
+			    System.out.println(file.getName() + "——执行回转");
+			    break;
+			            
+			case NotificationClosed:
+			    writeFile(args[1], NotificationClosed);
+			    System.out.println(file.getName() + "——结案通知书");
+			    break;
+
+//-------------------------------------------------------------------			        
 			default:
 				if (Identification.check(img)) {
 					writeFile(args[1], identification);
