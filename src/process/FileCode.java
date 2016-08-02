@@ -99,6 +99,7 @@ public abstract interface FileCode
   public static final String CommutationParoleRuling = "78";
   public static final String RemarksTable = "79";
   public static final String Juanneimulu = "80";
+  public static final String EvidenceAnoticeInTheAddressConfirmation = "81";
   public static final String LitigationPreservationGuarantee = "82";
   public static final String EvidenceChangeNoticePeriod = "83";
   public static final String ChangeTheOrdinaryProcedureForApproval = "84";

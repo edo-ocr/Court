@@ -486,6 +486,415 @@ public class Document implements FileCode {
 					if (txt.matches("传票.{0,5}|提.{1,3}")) {
 						return courtSummon;
 					}
+//-----------------------------------------------------------------
+					if (txt.matches("证据交换笔录")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return exchangeOfNotes;
+					    }
+//					    return exchangeOfNotesFront;
+					//}
+					            
+
+					if (txt.matches("案件.{1,5}流程管理.{1,3}|.*立案登记表.{1,6}|立案审批表")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return CaseFlow;
+					    }
+//					    return CaseFlowFront;
+					//}
+					            
+
+					if (txt.matches("改变管辖通知书.{1,7}|指定管辖决定书")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return NoticeOfChangeInJurisdiction;
+					    }
+//					    return NoticeOfChangeInJurisdictionFront;
+					//}
+					            
+
+					if (txt.matches("[立案|应诉]通知书.{1,5}|.*补充材料通知书.{1,5}")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return FilingNoticeOfAcceptance;
+					    }
+//					    return FilingNoticeOfAcceptanceFront;
+					//}
+					            
+
+					if (txt.matches("阅卷通知书")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return MarkingNotice;
+					    }
+//					    return MarkingNoticeFront;
+					//}
+					            
+
+					if (txt.matches(".*简易程序.*")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return SimpleProceduresApply;
+					    }
+//					    return SimpleProceduresApplyFront;
+					//}
+					            
+
+					if (txt.matches("送达起诉书.{0,2}笔录")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return ServiceOfTheIndictment;
+					    }
+//					    return ServiceOfTheIndictmentFront;
+					//}
+					            
+
+					if (txt.matches("司法公开告知书")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return PublicationOfThisBookJustice;
+					    }
+//					    return PublicationOfThisBookJusticeFront;
+					//}
+					            
+
+					if (txt.matches("保证书.{5,11}|.{1,3}保.{0,3}候审.{1,3}[决定书|通知书].{1,6}"
+							+ "|.{0,2}居住.{0,2}通知书.{1,6}"
+							+ "|执行.{0,2}通知书.{0,5}")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return CompulsoryMeasuresChangeDecision;
+					    }
+//					    return CompulsoryMeasuresChangeDecisionFront;
+					//}
+					            
+
+					if (txt.matches("查封.{.3,7}财产.{1,7}|查询存款函.{1,6}|诉讼保全.{0,3}")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return LitigationHolds;
+					    }
+//					    return LitigationHoldsFront;
+					//}
+					            
+
+					if (txt.matches("准许调[取查].{0,3}[书令].{0,4}")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return PermitTheTransferOfEvidence;
+					    }
+//					    return PermitTheTransferOfEvidenceFront;
+					//}
+					            
+
+					if (txt.matches(".*鉴定结论|.{0,4}鉴定委托书.{4,10}|.{0,2}笔录.{7}")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return ExpertConclusions;
+					    }
+//					    return ExpertConclusionsFront;
+					//}
+					            
+
+					if (txt.matches("被告人坦白.{0,5}问题登记表|查证材料")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return RegistrationFormAndCheckMaterial;
+					    }
+//					    return RegistrationFormAndCheckMaterialFront;
+					//}
+					            
+
+					if (txt.matches("限制出境决定书.{7}")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return RestrictExitDecision;
+					    }
+//					    return RestrictExitDecisionFront;
+					//}
+					            
+
+					if (txt.matches(".{0,2}申请回避.{1,3}决定书.{7}")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return WithdrawalByPetition;
+					    }
+//					    return WithdrawalByPetitionFront;
+					//}
+					            
+
+					if (txt.matches("出庭通知书.{7}|.{1,4}员出席法庭通知书")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return NoticeOfTheHearing;
+					    }
+//					    return NoticeOfTheHearingFront;
+					//}
+					            
+
+					if (txt.matches("公告.{3,8}")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return CourtPapersAnnouncement;
+					    }
+//					    return CourtPapersAnnouncementFront;
+					//}
+					            
+
+					if (txt.matches("量刑建议书")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return SentencingRecommendation;
+					    }
+//					    return SentencingRecommendationFront;
+					//}
+					            
+
+					if (txt.matches(".{2}决定书.{7}")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return PrejudiceCriminalProceedingsDetention;
+					    }
+//					    return PrejudiceCriminalProceedingsDetentionFront;
+					//}
+					            
+
+					if (txt.matches("刑事裁定书.{0,5}|刑事判决书|刑事附带民事.{1,3}")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return OriginalJudgmentDocument;
+					    }
+//					    return OriginalJudgmentDocumentFront;
+					//}
+					            
+
+					if (txt.matches("宣判笔录、判后释法笔录")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return SentencingNotes;
+					    }
+//					    return SentencingNotesFront;
+					//}
+					            
+
+					if (txt.matches("司法建议书")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return JudicialRecommendations;
+					    }
+//					    return JudicialRecommendationsFront;
+					//}
+					            
+
+					if (txt.matches("上抗诉案件移送函（稿）")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return ReferTheCaseToTheProtestLetter;
+					    }
+//					    return ReferTheCaseToTheProtestLetterFront;
+					//}
+					            
+
+					if (txt.matches("退卷函")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return UnwindingLetter;
+					    }
+//					    return UnwindingLetterFront;
+					//}
+					            
+
+					if (txt.matches("执行死刑命令")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return ExecutionOrder;
+					    }
+//					    return ExecutionOrderFront;
+					//}
+					            
+
+					if (txt.matches("暂停执行死刑的报告及批复")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return AMoratoriumOnExecutions;
+					    }
+//					    return AMoratoriumOnExecutionsFront;
+					//}
+					            
+
+					if (txt.matches("死刑执行前验明正身笔录")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return NotesPositivelyIdentified;
+					    }
+//					    return NotesPositivelyIdentifiedFront;
+					//}
+					            
+
+					if (txt.matches("执行死刑笔录")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return NotesExecutions;
+					    }
+//					    return NotesExecutionsFront;
+					//}
+					            
+
+					if (txt.matches("执行死刑报告")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return ExecutionReport;
+					    }
+//					    return ExecutionReportFront;
+					//}
+					            
+
+					if (txt.matches("死刑执行前后照片")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return ExecutionsBeforeAndAfterPhotos;
+					    }
+//					    return ExecutionsBeforeAndAfterPhotosFront;
+					//}
+					            
+
+					if (txt.matches("死刑犯家属领取骨灰或尸体通知")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return CondemnedFamiliesReceiveAshes;
+					    }
+//					    return CondemnedFamiliesReceiveAshesFront;
+					//}
+					            
+
+					if (txt.matches("尸体处理登记表")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return CarcassDisposalRegistrationForm;
+					    }
+//					    return CarcassDisposalRegistrationFormFront;
+					//}
+					            
+
+					if (txt.matches("执行通知书")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return EnforcementNotice;
+					    }
+//					    return EnforcementNoticeFront;
+					//}
+					            
+
+					if (txt.matches("赃物、证物移送清单及处理手续材料")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return evidenceHandlingProceduresAndMaterialTransferList;
+					    }
+//					    return evidenceHandlingProceduresAndMaterialTransferListFront;
+					//}
+					            
+
+					if (txt.matches("减刑、假释裁定书")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return CommutationParoleRuling;
+					    }
+//					    return CommutationParoleRulingFront;
+					//}
+					            
+
+					if (txt.matches("备考表")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return RemarksTable;
+					    }
+//					    return RemarksTableFront;
+					//}
+					            
+
+					if (txt.matches("卷内目录")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return Juanneimulu;
+					    }
+//					    return JuanneimuluFront;
+					//}
+					            
+
+					if (txt.matches("举证通知书、送达地址确认书和电子送达确认书")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return EvidenceAnoticeInTheAddressConfirmation;
+					    }
+//					    return EvidenceAnoticeInTheAddressConfirmationFront;
+					//}
+					            
+
+					if (txt.matches("诉讼保全担保书、诉讼保全裁定书正本、鉴定委托书、鉴定结论")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return LitigationPreservationGuarantee;
+					    }
+//					    return LitigationPreservationGuaranteeFront;
+					//}
+					            
+
+					if (txt.matches("变更举证期限通知书")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return EvidenceChangeNoticePeriod;
+					    }
+//					    return EvidenceChangeNoticePeriodFront;
+					//}
+					            
+
+					if (txt.matches("变更普通程序审批表")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return ChangeTheOrdinaryProcedureForApproval;
+					    }
+//					    return ChangeTheOrdinaryProcedureForApprovalFront;
+					//}
+					            
+
+					if (txt.matches("证物处理手续")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return EvidenceHandlingProcedures;
+					    }
+//					    return EvidenceHandlingProceduresFront;
+					//}
+					            
+
+					if (txt.matches("受理案件通知书")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return CaseAcceptanceNotice;
+					    }
+//					    return CaseAcceptanceNoticeFront;
+					//}
+					            
+
+					if (txt.matches("执行裁定")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return ImplementationOfTheDecision;
+					    }
+//					    return ImplementationOfTheDecisionFront;
+					//}
+					            
+
+					if (txt.matches("财产线索和报告")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return PropertyCluesAndReports;
+					    }
+//					    return PropertyCluesAndReportsFront;
+					//}
+					            
+
+					if (txt.matches("执行进程告知书")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return TheImplementationProcessOfThisBook;
+					    }
+//					    return TheImplementationProcessOfThisBookFront;
+					//}
+					            
+
+					if (txt.matches("评估、拍卖等财产变现手续")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return auctionProceduresForRealizationOfProperty;
+					    }
+//					    return auctionProceduresForRealizationOfPropertyFront;
+					//}
+					            
+
+					if (txt.matches("处理执行争议书")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return ProcessingExecutionDisputeBooks;
+					    }
+//					    return ProcessingExecutionDisputeBooksFront;
+					//}
+					            
+
+					if (txt.matches("执行款过户手续")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return ExecutiveShallTransferProcedures;
+					    }
+//					    return ExecutiveShallTransferProceduresFront;
+					//}
+					            
+
+					if (txt.matches("执行回转")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return Swivel;
+					    }
+//					    return SwivelFront;
+					//}
+					            
+
+					if (txt.matches("结案通知书")) {
+//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					        return NotificationClosed;
+					    }
+//					    return NotificationClosedFront;
+					//}
 				}
 			}
 			if (lineNum > 3) {
