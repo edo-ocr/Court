@@ -42,12 +42,16 @@ public class Main implements FileCode{
 				System.out.println(file.getName() + "——起诉书");
 				break;
 			case indictFront:
-				writeFile(args[1], indictment);
+				writeFile(args[1], indictFront);
 				System.out.println(file.getName() + "——起诉书首页");
 				break;
 			case guarantee:
 				writeFile(args[1], guarantee);
 				System.out.println(file.getName() + "——保证书、担保书");
+				break;
+			case guaranteeFront:
+				writeFile(args[1], guaranteeFront);
+				System.out.println(file.getName() + "——保证书、担保书首页");
 				break;
 			case answer:
 				writeFile(args[1], answer);
@@ -70,7 +74,7 @@ public class Main implements FileCode{
 				System.out.println(file.getName() + "——代理词");
 				break;
 			case representativeFront:
-				writeFile(args[1], representative);
+				writeFile(args[1], representativeFront);
 				System.out.println(file.getName() + "——首页-代理词");
 				break;
 			case execution:
@@ -92,6 +96,10 @@ public class Main implements FileCode{
 			case compromise:
 				writeFile(args[1], compromise);
 				System.out.println(file.getName() + "——和解协议");
+				break;
+			case compromiseFront:
+				writeFile(args[1], compromiseFront);
+				System.out.println(file.getName() + "——和解协议首页");
 				break;
 			case stateOfPubProsecution:
 				writeFile(args[1], stateOfPubProsecution);
@@ -300,6 +308,11 @@ public class Main implements FileCode{
 			    System.out.println(file.getName() + "——简易程序适用");
 			    break;
 			            
+			case SimpleProceduresApplyFront:
+				writeFile(args[1], SimpleProceduresApplyFront);
+				System.out.println(file.getName() + "——简易程序适用首页");
+				break;
+				
 			case ServiceOfTheIndictment:
 			    writeFile(args[1], ServiceOfTheIndictment);
 			    System.out.println(file.getName() + "——送达起诉书笔录");
@@ -310,6 +323,11 @@ public class Main implements FileCode{
 			    System.out.println(file.getName() + "——司法公开告知书");
 			    break;
 			            
+			case PublicationOfThisBookJusticeFront:
+				writeFile(args[1], PublicationOfThisBookJusticeFront);
+				System.out.println(file.getName() + "——司法公开告知书首页");
+				break;
+				
 			case CompulsoryMeasuresChangeDecision:
 			    writeFile(args[1], CompulsoryMeasuresChangeDecision);
 			    System.out.println(file.getName() + "——变更强制措施决定及对家属通知书");
@@ -370,9 +388,14 @@ public class Main implements FileCode{
 			    System.out.println(file.getName() + "——裁判文书正本");
 			    break;
 			            
-			case SentencingNotes:
-			    writeFile(args[1], SentencingNotes);
-			    System.out.println(file.getName() + "——宣判笔录、判后释法笔录");
+			case OriginalJudgmentDocumentFront:
+				writeFile(args[1], OriginalJudgmentDocumentFront);
+				System.out.println(file.getName() + "——裁判文书正本首页");
+				break;
+				
+			case SentencingNotesFront:
+			    writeFile(args[1], SentencingNotesFront);
+			    System.out.println(file.getName() + "——宣判笔录、判后释法笔录首页");
 			    break;
 			            
 			case JudicialRecommendations:
@@ -380,6 +403,11 @@ public class Main implements FileCode{
 			    System.out.println(file.getName() + "——司法建议书");
 			    break;
 			            
+			case JudicialRecommendationsFront:
+				writeFile(args[1], JudicialRecommendationsFront);
+				System.out.println(file.getName() + "——司法建议书首页");
+				break;
+				
 			case ReferTheCaseToTheProtestLetter:
 			    writeFile(args[1], ReferTheCaseToTheProtestLetter);
 			    System.out.println(file.getName() + "——上抗诉案件移送函（稿）");
@@ -445,6 +473,11 @@ public class Main implements FileCode{
 			    System.out.println(file.getName() + "——减刑、假释裁定书");
 			    break;
 			            
+			case CommutationParoleRulingFront:
+				writeFile(args[1], CommutationParoleRulingFront);
+				System.out.println(file.getName() + "——减刑、假释裁定书首页");
+				break;
+				
 			case RemarksTable:
 			    writeFile(args[1], RemarksTable);
 			    System.out.println(file.getName() + "——备考表");
@@ -460,11 +493,21 @@ public class Main implements FileCode{
 			    System.out.println(file.getName() + "——举证通知书、送达地址确认书和电子送达确认书");
 			    break;
 			            
+			case EvidenceAnoticeInTheAddressConfirmationFront:
+				writeFile(args[1], EvidenceAnoticeInTheAddressConfirmationFront);
+				System.out.println(file.getName() + "——举证通知书、送达地址确认书和电子送达确认书首页");
+				break;
+				
 			case LitigationPreservationGuarantee:
 			    writeFile(args[1], LitigationPreservationGuarantee);
 			    System.out.println(file.getName() + "——诉讼保全担保书、诉讼保全裁定书正本、鉴定委托书、鉴定结论");
 			    break;
 			            
+			case LitigationPreservationGuaranteeFront:
+				writeFile(args[1], LitigationPreservationGuaranteeFront);
+				System.out.println(file.getName() + "——诉讼保全担保书、诉讼保全裁定书正本、鉴定委托书、鉴定结论首页");
+				break;
+				
 			case EvidenceChangeNoticePeriod:
 			    writeFile(args[1], EvidenceChangeNoticePeriod);
 			    System.out.println(file.getName() + "——变更举证期限通知书");
@@ -490,6 +533,11 @@ public class Main implements FileCode{
 			    System.out.println(file.getName() + "——执行裁定");
 			    break;
 			            
+			case ImplementationOfTheDecisionFront:
+				writeFile(args[1], ImplementationOfTheDecisionFront);
+				System.out.println(file.getName() + "——执行裁定首页");
+				break;
+				
 			case PropertyCluesAndReports:
 			    writeFile(args[1], PropertyCluesAndReports);
 			    System.out.println(file.getName() + "——财产线索和报告");

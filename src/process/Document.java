@@ -396,8 +396,12 @@ public class Document implements FileCode {
 						return mediation;
 					}
 					if (txt.matches(".{0,3}[和调]解.{2,3}|调.{0,2}申请书|.{2,6}议书|.{0,2}[谅凉][解牌].{0,2}")) {
-						return compromise;
-					}
+					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+				        return compromise;
+				    }
+				    return compromiseFront;
+				}						
+											
 					if (txt.matches("执行通知书.{0,5}|.{3,8}发还裁决款审批表|.{0,5}收.?条")) {
 						return "33";
 					}
@@ -468,16 +472,19 @@ public class Document implements FileCode {
 							+ "|.{0,6}网上寄件.?")) {
 						return proofOfService;
 					}
-					if (txt.matches("保证书|.*担保书")) {
-						return guarantee;
+					if (txt.matches("保证书|.*担保书|法庭笔录|庭审笔录|法庭审理笔录|.*审判笔录")) {
+						if ((fileEndCheck(img, row, 0.2D)) || (endCheck(img, row))) {
+							return guarantee;
 					}
-					if (txt.matches("庭审笔录")) {
+					    return guaranteeFront;
+					}						
+					if (txt.matches("庭前会议笔录|证据交换笔录")) {
 						if ((fileEndCheck(img, row, 0.2D)) || (endCheck(img, row))) {
 							return preCourtConferenceNote;
 						}
 						return preCourtConferenceNoteFront;
 					}
-					if (txt.matches("法庭审理笔录")) {
+					if (txt.matches("庭前工作笔录")) {
 						if ((fileEndCheck(img, row, 0.2D)) || (endCheck(img, row))) {
 							return preCourtWorkNote;
 						}
@@ -495,7 +502,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches(".{1,4}案件.{1,5}.程管理.{1,3}|.*立案登记表.{1,6}|立案审批表|.*案件审判流程.*"
+					if (txt.matches(".{1,4}案件.{1,5}.程管理.{1,3}|.*立案登记表.{1,6}|立案审批表|.*案件.*审判流程.*"
 							+ "|.*立案.*理.*息")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return CaseFlow;
@@ -529,11 +536,11 @@ public class Document implements FileCode {
 					            
 
 					if (txt.matches(".*简易程序.*")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return SimpleProceduresApply;
 					    }
-//					    return SimpleProceduresApplyFront;
-					//}
+					    return SimpleProceduresApplyFront;
+					}
 					            
 
 					if (txt.matches("送达起诉书.{0,2}笔录")) {
@@ -545,11 +552,11 @@ public class Document implements FileCode {
 					            
 
 					if (txt.matches("司法公.{0,2}知书|.*监督.*|诉讼[冈风凤]险.{0,5}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return PublicationOfThisBookJustice;
 					    }
-//					    return PublicationOfThisBookJusticeFront;
-					//}
+					    return PublicationOfThisBookJusticeFront;
+					}
 					            
 
 					if (txt.matches("保证书.{5,11}|.{1,3}保.{0,3}候审.{1,3}[决定书|通知书].{1,6}"
@@ -643,27 +650,27 @@ public class Document implements FileCode {
 					            
 
 					if (txt.matches("刑事裁定书（准许.{0,5}|刑[辜事]判决书|刑事附带民事.{1,3}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return OriginalJudgmentDocument;
 					    }
-//					    return OriginalJudgmentDocumentFront;
-					//}
+					    return OriginalJudgmentDocumentFront;
+					}
 					            
 
 					if (txt.matches("宣判笔录|.判笔.{2,6}|判后释法笔录")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return SentencingNotes;
 					    }
-//					    return SentencingNotesFront;
-					//}
+					    return SentencingNotesFront;
+					}
 					            
 
 					if (txt.matches("司法建议书.{2,7}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return JudicialRecommendations;
 					    }
-//					    return JudicialRecommendationsFront;
-					//}
+					    return JudicialRecommendationsFront;
+					}
 					            
 
 					if (txt.matches("报送上（抗.{0,4}件移送.{2,6}")) {
@@ -763,11 +770,11 @@ public class Document implements FileCode {
 					            
 
 					if (txt.matches("减刑、假释裁定书")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return CommutationParoleRuling;
 					    }
-//					    return CommutationParoleRulingFront;
-					//}
+					    return CommutationParoleRulingFront;
+					}
 					            
 
 					if (txt.matches("备考表")) {
@@ -787,19 +794,19 @@ public class Document implements FileCode {
 					            
 
 					if (txt.matches("举证通知书|[送达地址|电子送达]确认书|当事.*确认书")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return EvidenceAnoticeInTheAddressConfirmation;
 					    }
-//					    return EvidenceAnoticeInTheAddressConfirmationFront;
-					//}
+					    return EvidenceAnoticeInTheAddressConfirmationFront;
+					}
 					            
 
 					if (txt.matches("诉讼保全.{0,2}书.{0,2}|鉴定委托书|鉴定结论|通知书.{2,5}重新.{1,3}申请.{0,2}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return LitigationPreservationGuarantee;
 					    }
-//					    return LitigationPreservationGuaranteeFront;
-					//}
+					    return LitigationPreservationGuaranteeFront;
+					}
 					            
 
 					if (txt.matches("通知书.{2,5}延长.{2,4}申请.{0,2}|通知书.*当事人.*第三人.*|通知书.{3,9}举证期限.{0,3}")) {
@@ -835,11 +842,11 @@ public class Document implements FileCode {
 					            
 
 					if (txt.matches(".*[不上准].*裁定书")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return ImplementationOfTheDecision;
 					    }
-//					    return ImplementationOfTheDecisionFront;
-					//}
+					    return ImplementationOfTheDecisionFront;
+					}
 					            
 
 					if (txt.matches("财产线索和报告")) {
