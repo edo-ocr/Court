@@ -490,7 +490,7 @@ public class Document implements FileCode {
 						}
 						return preCourtWorkNoteFront;
 					}
-					if (txt.matches("传票.{0,5}|提.{1,3}")) {
+					if (txt.matches("传[票禀].{0,5}|提.{1,3}")) {
 						return courtSummon;
 					}
 //-----------------------------------------------------------------
@@ -502,8 +502,8 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches(".{1,4}案件.{1,5}.程管理.{1,3}|.*立案登记表.{1,6}|立案审批表|.*案件.*审判流程.*"
-							+ "|.*立案.*理.*息")) {
+					if (txt.matches(".{1,7}案件.{1,7}流.*管理.{1,3}|.*立案登记表.{1,6}|立案审批表|.*案件.*审判流.*"
+							+ "|.*立案.*理.*息|")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return CaseFlow;
 					    }
@@ -617,7 +617,7 @@ public class Document implements FileCode {
 					//}
 					            
 
-					if (txt.matches("[出开]庭通知书.{7}|.{1,4}员出.?法庭通知书|.*告知书|传[票禀]|.*合议庭.*成.*员.*通知书")) {
+					if (txt.matches("[出开]庭通知书.{7}|.{1,4}员出.?法庭通知书|.*告知书|.*合议庭.*成.*员.*通知书")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return NoticeOfTheHearing;
 					    }
@@ -673,7 +673,7 @@ public class Document implements FileCode {
 					}
 					            
 
-					if (txt.matches("报送上（抗.{0,4}件移送.{2,6}")) {
+					if (txt.matches("报送上（抗.{0,4}件.{2,6}")) {
 //					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 					        return ReferTheCaseToTheProtestLetter;
 					    }

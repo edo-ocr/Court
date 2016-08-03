@@ -267,7 +267,7 @@ public class Main implements FileCode{
 				break;
 			case courtSummon:
 				writeFile(args[1], courtSummon);
-				System.out.println(file.getName() + "——提神、询问当事人、提押票、传票");
+				System.out.println(file.getName() + "——提审、询问当事人、提押票、传票");
 				break;
 			case cost:
 				writeFile(args[1], cost);
