@@ -58,9 +58,8 @@ public class Document implements FileCode {
 				System.out.println("12_" + txt);
 				imgFile2.delete();
 
-				if (txt.matches(".*为其诉讼代理.{1,3}|.*代理诉讼.{0,3}|.{0,4}授权委[托抚拄]书.{0,5}|.*委托.{0,4}"
-						+ "|.{0,5}法律服务.{0,5}")) {
-					return "5";
+				if (txt.matches(".*为其诉讼代理.{1,3}|.*代理诉讼.{0,3}|.{0,4}授权委[托抚拄]书.{0,5}|.*委托.{0,4}" + "|.{0,5}法律服务.{0,5}")) {
+					return identification;
 				}
 				if (txt.matches(".*撤回.{0,3}执行.{0,4}")) {
 					return "30";
@@ -332,7 +331,9 @@ public class Document implements FileCode {
 						return socialSurveyFront;
 					}
 
-					if (txt.matches(".*授.{0,2}[权杈].{0,3}[托抚].?书.{0,4}|.{0,5}委.{1,3}"
+					if (txt.matches(".*调解笔录.{0,3}")) {
+						return compromise;
+					} else if (txt.matches(".*授.{0,2}[权杈].{0,3}[托抚].?书.{0,4}|.{0,5}委.{1,3}"
 							+ "|委[托抚拄]书编号.{2,7}.{0,5}身[纷份]证[明朋].{0,3}|.{0,2}公.{1,5}.{1,4}[\\d]{7,}.*"
 							+ "|.*律.{2,5}所[^信]?函.{0,5}|法人身[纷份]证.*|.*代码信息.*|.*执业证类别.*"
 							+ "|.*有限公司注册.*一社会信用.*[\\d]{6,}|.{0,3}[法定代表人身[纷份]证复印件]{5,}.{0,4}"
@@ -341,10 +342,10 @@ public class Document implements FileCode {
 							+ "|.{0,3}注册号[\\d]{7,18}.{0,3}|.{0,3}登记项目|.{2,6}证[明朋]|.?组织.构代码证.*|中华人民共和.?国.?"
 							+ "|律.{2,5}所[^信]?函.{0,5}第.{1,6}号|.{2,8}律师事务所|营.[执捌]照|.*统一社会信用代.*"
 							+ "|亍聿师事.{1,4}所函|律师事.{1,3}函|授[权衩杈]委.{2,6}|.{0,4}身[份伯]证明.?|.*一[社祉]会信用代.*"
-							+ "|.{1,3}身.?号码[\\d]{7,}|.明|法人(代表)?.?[证正]明.{0,6}|.?授.{1,3}"
-							+ "|律师.?务所名称.{2,9}")) {
+							+ "|.{1,3}身.?号码[\\d]{7,}|.明|法人(代表)?.?[证正]明.{0,6}|.?授.{1,3}" + "|律师.?务所名称.{2,9}")) {
 						return identification;
 					}
+
 					if (txt.matches("[悔梅]过书")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return penitence;
@@ -396,12 +397,12 @@ public class Document implements FileCode {
 						return mediation;
 					}
 					if (txt.matches(".{0,3}[和调]解.{2,3}|调.{0,2}申请书|.{2,6}议书|.{0,2}[谅凉][解牌].{0,2}")) {
-					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-				        return compromise;
-				    }
-				    return compromiseFront;
-				}						
-											
+						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+							return compromise;
+						}
+						return compromiseFront;
+					}
+
 					if (txt.matches("执行通知书.{0,5}|.{3,8}发还裁决款审批表|.{0,5}收.?条")) {
 						return "33";
 					}
@@ -411,15 +412,15 @@ public class Document implements FileCode {
 						}
 						return "33a";
 					}
-					if (txt.matches(".{0,8}判决书|.*裁.*定")) {
+					if (txt.matches(".{0,8}判决书|.*裁.*定|裁定书原稿" + "|.{0,8}民事调解.{0,2}书.*|.{0,8}民事裁定.{0,2}书.*|"
+							+ "|.{0,8}民事判决.{0,2}书.*|")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return "19";
 						}
 						return "19a";
 					}
 					if (txt.matches(
-							".{0,3}复议申请书.*|.{0,6}异议申请书|执行异议书.{0,4}|.*行.{0,3}申请书.{0,2}|申请执行书.{0,6}"
-							+ "|.{0,2}强制执行.*")) {
+							".{0,3}复议申请书.*|.{0,6}异议申请书|执行异议书.{0,4}|.*行.{0,3}申请书.{0,2}|申请执行书.{0,6}" + "|.{0,2}强制执行.*")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return execution;
 						}
@@ -444,8 +445,7 @@ public class Document implements FileCode {
 					if (txt.matches(".{0,5}证据光盘目录.*|调.{0,3}证据申请书")) {
 						return "26";
 					}
-					if (txt.matches(
-							"证.?[据居].{0,4}|案件目录|.?受案登记表.?|.?受案回执.?|鉴定意见书|质证.{0,2}录"
+					if (txt.matches("证.?[据居].{0,4}|案件目录|.?受案登记表.?|.?受案回执.?|鉴定意见书|质证.{0,2}录"
 							+ "|.*气象证[明朋].*|.*被罚.*|.*罚款处.*|.{0,4}鉴定书.{0,3}|.*损车牌.*|房屋登记.{0,2}"
 							+ "|征收.{0,4}清单.?|延期举证申请书|婚姻登记记录.{0,4}|一、居.?户口.?具.*|.?常住.{0,4}记卡.{0,4}|注意事项"
 							+ "|.{2,8}列表|.{0,3}调[杳查]笔录.{0,7}")) {
@@ -468,16 +468,16 @@ public class Document implements FileCode {
 					if (txt.matches(".*讼费收.{0,2}|.*诉讼费专用票据.*")) {
 						return cost;
 					}
-					if (txt.matches("邮件号码.*|.*投递并签收.*|.*邮.{1,2}号码:.*|运单.程|.*揽投员.*|[送达]达.{0,3}|.*EMS.*"
-							+ "|.{0,6}网上寄件.?")) {
+					if (txt.matches(
+							"邮件号码.*|.*投递并签收.*|.*邮.{1,2}号码:.*|运单.程|.*揽投员.*|[送达]达.{0,3}|.*EMS.*" + "|.{0,6}网上寄件.?")) {
 						return proofOfService;
 					}
 					if (txt.matches("保证书|.*担保书|法庭笔录|庭审笔录|法庭审理笔录|.*审判笔录")) {
 						if ((fileEndCheck(img, row, 0.2D)) || (endCheck(img, row))) {
 							return guarantee;
+						}
+						return guaranteeFront;
 					}
-					    return guaranteeFront;
-					}						
 					if (txt.matches("庭前会议笔录|证据交换笔录")) {
 						if ((fileEndCheck(img, row, 0.2D)) || (endCheck(img, row))) {
 							return preCourtConferenceNote;
@@ -493,422 +493,252 @@ public class Document implements FileCode {
 					if (txt.matches("传[票禀].{0,5}|提.{1,3}")) {
 						return courtSummon;
 					}
-//-----------------------------------------------------------------
+					// -----------------------------------------------------------------
 					if (txt.matches("证据交换笔录")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return exchangeOfNotes;
-					    }
-//					    return exchangeOfNotesFront;
-					//}
-					            
+						return exchangeOfNotes;
+					}
 
 					if (txt.matches(".{1,7}案件.{1,7}流.*管理.{1,3}|.*立案登记表.{1,6}|立案审批表|.*案件.*审判流.*"
-							+ "|.*立案.*理.*息|")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return CaseFlow;
-					    }
-//					    return CaseFlowFront;
-					//}
-					            
+							+ "|.*立案.*理.*息|.*案件.*立案.*审.*")) {
+
+						return CaseFlow;
+					}
 
 					if (txt.matches("改变管辖通知书.{1,7}|指定管辖决定书")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return NoticeOfChangeInJurisdiction;
-					    }
-//					    return NoticeOfChangeInJurisdictionFront;
-					//}
-					            
 
-					if (txt.matches("[立案|应诉|应拆].知书.{1,5}|.*补充材料通知书.{1,5}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return FilingNoticeOfAcceptance;
-					    }
-//					    return FilingNoticeOfAcceptanceFront;
-					//}
-					            
+						return NoticeOfChangeInJurisdiction;
+					}
+
+					// if (txt.matches(".{0,8}立案.?知书.{0,5}|.*补充材料通知书.{0,5}"
+					// + "|.{0,8}应[诉拆].?知书.{0,5}")) {
+					//
+					// return FilingNoticeOfAcceptance;
+					// }
+					if (txt.matches(".{0,8}[立案|应诉|应拆].?知书.{0,5}|.*补充材料通知书.{0,5}")) {
+
+						return FilingNoticeOfAcceptance;
+					}
 
 					if (txt.matches("阅卷通知书")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return MarkingNotice;
-					    }
-//					    return MarkingNoticeFront;
-					//}
-					            
+						return MarkingNotice;
+					}
 
 					if (txt.matches(".*简易程序.*")) {
-					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return SimpleProceduresApply;
-					    }
-					    return SimpleProceduresApplyFront;
+						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+							return SimpleProceduresApply;
+						}
+						return SimpleProceduresApplyFront;
 					}
-					            
 
 					if (txt.matches("送达起诉书.{0,2}笔录")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return ServiceOfTheIndictment;
-					    }
-//					    return ServiceOfTheIndictmentFront;
-					//}
-					            
+						return ServiceOfTheIndictment;
+					}
 
 					if (txt.matches("司法公.{0,2}知书|.*监督.*|诉讼[冈风凤]险.{0,5}")) {
-					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return PublicationOfThisBookJustice;
-					    }
-					    return PublicationOfThisBookJusticeFront;
+						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+							return PublicationOfThisBookJustice;
+						}
+						return PublicationOfThisBookJusticeFront;
 					}
-					            
 
-					if (txt.matches("保证书.{5,11}|.{1,3}保.{0,3}候审.{1,3}[决定书|通知书].{1,6}"
-							+ "|.{0,2}居住.{0,2}通知书.{1,6}"
-							+ "|执行.{0,2}通知书.{0,5}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return CompulsoryMeasuresChangeDecision;
-					    }
-//					    return CompulsoryMeasuresChangeDecisionFront;
-					//}
-					            
+					if (txt.matches("保证书.{5,11}|.{1,3}保.{0,3}候审.{1,3}通知书.{1,6}"
+							+ "|.{0,2}居住.{0,2}通知书.{1,6}|.{1,3}保.{0,3}候审.{1,3}决定书.{1,6}" + "|执行.{0,2}通知书.{0,5}")) {
+						return CompulsoryMeasuresChangeDecision;
+					}
 
 					if (txt.matches("查封.{3,7}财产.{1,7}|查询存款函.{1,6}|诉讼保全.{0,3}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return LitigationHolds;
-					    }
-//					    return LitigationHoldsFront;
-					//}
-					            
+						return LitigationHolds;
+					}
 
 					if (txt.matches("准许调[取查].{0,3}[书令].{0,4}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return PermitTheTransferOfEvidence;
-					    }
-//					    return PermitTheTransferOfEvidenceFront;
-					//}
-					            
+						return PermitTheTransferOfEvidence;
+					}
 
 					if (txt.matches(".*鉴定结论|.{0,4}鉴定委托书.{4,10}|.{0,2}笔录.{7}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return ExpertConclusions;
-					    }
-//					    return ExpertConclusionsFront;
-					//}
-					            
+						return ExpertConclusions;
+					}
 
 					if (txt.matches("被告人坦白.{0,5}问题登记表|查证材料")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return RegistrationFormAndCheckMaterial;
-					    }
-//					    return RegistrationFormAndCheckMaterialFront;
-					//}
-					            
+						return RegistrationFormAndCheckMaterial;
+					}
 
 					if (txt.matches("限制出境决定书.{7}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return RestrictExitDecision;
-					    }
-//					    return RestrictExitDecisionFront;
-					//}
-					            
+						return RestrictExitDecision;
+					}
 
 					if (txt.matches(".{0,2}申请回避.{1,3}决定书.{7}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return WithdrawalByPetition;
-					    }
-//					    return WithdrawalByPetitionFront;
-					//}
-					            
+						return WithdrawalByPetition;
+					}
 
 					if (txt.matches("[出开]庭通知书.{7}|.{1,4}员出.?法庭通知书|.*告知书|.*合议庭.*成.*员.*通知书")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return NoticeOfTheHearing;
-					    }
-//					    return NoticeOfTheHearingFront;
-					//}
-					            
+						return NoticeOfTheHearing;
+					}
 
 					if (txt.matches(".*公告.{3,8}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return CourtPapersAnnouncement;
-					    }
-//					    return CourtPapersAnnouncementFront;
-					//}
-					            
+						return CourtPapersAnnouncement;
+					}
 
 					if (txt.matches("量刑建议书")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return SentencingRecommendation;
-					    }
-//					    return SentencingRecommendationFront;
-					//}
-					            
+						return SentencingRecommendation;
+					}
 
 					if (txt.matches(".{2}决定书.{7}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return PrejudiceCriminalProceedingsDetention;
-					    }
-//					    return PrejudiceCriminalProceedingsDetentionFront;
-					//}
-					            
+						return PrejudiceCriminalProceedingsDetention;
+					}
 
 					if (txt.matches("刑事裁定书（准许.{0,5}|刑[辜事]判决书|刑事附带民事.{1,3}")) {
-					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return OriginalJudgmentDocument;
-					    }
-					    return OriginalJudgmentDocumentFront;
+						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+							return OriginalJudgmentDocument;
+						}
+						return OriginalJudgmentDocumentFront;
 					}
-					            
 
 					if (txt.matches("宣判笔录|.判笔.{2,6}|判后释法笔录")) {
-					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return SentencingNotes;
-					    }
-					    return SentencingNotesFront;
+						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+							return SentencingNotes;
+						}
+						return SentencingNotesFront;
 					}
-					            
 
 					if (txt.matches("司法建议书.{2,7}")) {
-					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return JudicialRecommendations;
-					    }
-					    return JudicialRecommendationsFront;
+						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+							return JudicialRecommendations;
+						}
+						return JudicialRecommendationsFront;
 					}
-					            
 
 					if (txt.matches("报送上（抗.{0,4}件.{2,6}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return ReferTheCaseToTheProtestLetter;
-					    }
-//					    return ReferTheCaseToTheProtestLetterFront;
-					//}
-					            
+						return ReferTheCaseToTheProtestLetter;
+					}
 
 					if (txt.matches("退卷函")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return UnwindingLetter;
-					    }
-//					    return UnwindingLetterFront;
-					//}
-					            
+						return UnwindingLetter;
+					}
 
 					if (txt.matches(".{1,3}执行死刑命令.{0,4}死刑.{1,3}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return ExecutionOrder;
-					    }
-//					    return ExecutionOrderFront;
-					//}
-					            
+						return ExecutionOrder;
+					}
 
 					if (txt.matches("暂停执行死刑的报告及批复")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return AMoratoriumOnExecutions;
-					    }
-//					    return AMoratoriumOnExecutionsFront;
-					//}
-					            
+						return AMoratoriumOnExecutions;
+					}
 
 					if (txt.matches("验明正身笔录.{0,2}死刑用.{0,2}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return NotesPositivelyIdentified;
-					    }
-//					    return NotesPositivelyIdentifiedFront;
-					//}
-					            
+						return NotesPositivelyIdentified;
+					}
 
 					if (txt.matches("执行死刑笔录.{0,2}刑事.{0,3}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return NotesExecutions;
-					    }
-//					    return NotesExecutionsFront;
-					//}
-					            
+						return NotesExecutions;
+					}
 
 					if (txt.matches("执行死刑报告")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return ExecutionReport;
-					    }
-//					    return ExecutionReportFront;
-					//}
-					            
+						return ExecutionReport;
+					}
 
 					if (txt.matches("死刑罪犯照片")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return ExecutionsBeforeAndAfterPhotos;
-					    }
-//					    return ExecutionsBeforeAndAfterPhotosFront;
-					//}
-					            
+						return ExecutionsBeforeAndAfterPhotos;
+					}
 
 					if (txt.matches("领取骨灰通知书.{3,9}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return CondemnedFamiliesReceiveAshes;
-					    }
-//					    return CondemnedFamiliesReceiveAshesFront;
-					//}
-					            
+						return CondemnedFamiliesReceiveAshes;
+					}
 
 					if (txt.matches("尸体处理登记表")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return CarcassDisposalRegistrationForm;
-					    }
-//					    return CarcassDisposalRegistrationFormFront;
-					//}
-					            
+						return CarcassDisposalRegistrationForm;
+					}
 
-					if (txt.matches("[执行|释放]通知书.{3,10}用.?|[减刑|假释]执行通知书.*用.?")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return EnforcementNotice;
-					    }
-//					    return EnforcementNoticeFront;
-					//}
-					            
+					if (txt.matches("执行通知书.{3,10}用.?|减刑执行通知书.*用.?" + "|释放通知书.{3,10}用.?|假释执行通知书.*用.?")) {
+						return EnforcementNotice;
+					}
 
 					if (txt.matches("发还财物品清单.{1,6}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return evidenceHandlingProceduresAndMaterialTransferList;
-					    }
-//					    return evidenceHandlingProceduresAndMaterialTransferListFront;
-					//}
-					            
+						return evidenceHandlingProceduresAndMaterialTransferList;
+					}
 
 					if (txt.matches("减刑、假释裁定书")) {
-					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return CommutationParoleRuling;
-					    }
-					    return CommutationParoleRulingFront;
+						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+							return CommutationParoleRuling;
+						}
+						return CommutationParoleRulingFront;
 					}
-					            
 
 					if (txt.matches("备考表")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return RemarksTable;
-					    }
-//					    return RemarksTableFront;
-					//}
-					            
+						return RemarksTable;
+					}
 
 					if (txt.matches("卷内目录")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return Juanneimulu;
-					    }
-//					    return JuanneimuluFront;
-					//}
-					            
-
-					if (txt.matches("举证通知书|[送达地址|电子送达]确认书|当事.*确认书")) {
-					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return EvidenceAnoticeInTheAddressConfirmation;
-					    }
-					    return EvidenceAnoticeInTheAddressConfirmationFront;
+						return Juanneimulu;
 					}
-					            
+
+					if (txt.matches(".*举证通知书|送达地址确认书|当事.*确认书" + "|电子送达确认书")) {
+						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+							return EvidenceAnoticeInTheAddressConfirmation;
+						}
+						return EvidenceAnoticeInTheAddressConfirmationFront;
+					}
 
 					if (txt.matches("诉讼保全.{0,2}书.{0,2}|鉴定委托书|鉴定结论|通知书.{2,5}重新.{1,3}申请.{0,2}")) {
-					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return LitigationPreservationGuarantee;
-					    }
-					    return LitigationPreservationGuaranteeFront;
+						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+							return LitigationPreservationGuarantee;
+						}
+						return LitigationPreservationGuaranteeFront;
 					}
-					            
 
 					if (txt.matches("通知书.{2,5}延长.{2,4}申请.{0,2}|通知书.*当事人.*第三人.*|通知书.{3,9}举证期限.{0,3}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return EvidenceChangeNoticePeriod;
-					    }
-//					    return EvidenceChangeNoticePeriodFront;
-					//}
-					            
+						return EvidenceChangeNoticePeriod;
+					}
 
 					if (txt.matches("申请.*程序.{2,4}|转换程序通知书|民事.{1,6}程序.{1,3}程序.{1,2}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return ChangeTheOrdinaryProcedureForApproval;
-					    }
-//					    return ChangeTheOrdinaryProcedureForApprovalFront;
-					//}
-					            
+						return ChangeTheOrdinaryProcedureForApproval;
+					}
 
 					if (txt.matches("证物处理手续.{1,3}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return EvidenceHandlingProcedures;
-					    }
-//					    return EvidenceHandlingProceduresFront;
-					//}
-					            
+						return EvidenceHandlingProcedures;
+					}
 
 					if (txt.matches("受.?[里理]通知书|驳回申诉")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return CaseAcceptanceNotice;
-					    }
-//					    return CaseAcceptanceNoticeFront;
-					//}
-					            
+						return CaseAcceptanceNotice;
+					}
 
 					if (txt.matches(".*[不上准].*裁定书")) {
-					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return ImplementationOfTheDecision;
-					    }
-					    return ImplementationOfTheDecisionFront;
+						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
+							return ImplementationOfTheDecision;
+						}
+						return ImplementationOfTheDecisionFront;
 					}
-					            
 
 					if (txt.matches("财产线索和报告")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return PropertyCluesAndReports;
-					    }
-//					    return PropertyCluesAndReportsFront;
-//					}
-					            
+						return PropertyCluesAndReports;
+					}
 
 					if (txt.matches("执行进程告知书")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return TheImplementationProcessOfThisBook;
-					    }
-//					    return TheImplementationProcessOfThisBookFront;
-					//}
-					            
+						return TheImplementationProcessOfThisBook;
+					}
 
 					if (txt.matches("由法院.*有关财产.{4,8}|.{1,3}拍卖措施.{1,3}|.*成交确认.{0,4}"
 							+ "|.*变卖措施.{1,4}|.*以物抵债.{1,5}|鉴定委托书|价格评估委托书|拍卖.{0,3}卖.*委托书"
 							+ "|拍卖通知书|查封公告|查封.{4,8}财产清单|拍卖公告|.*迁出房屋.{0,2}退出土地.{0,3}"
-							+ "|搜查令|.{0,3}交出财物.{0,6}|.{1,5}生效法律.{1,4}行为.{0,6}"
-							+ "|折价赔偿.*财产.{1,5}|代为完成.*"
+							+ "|搜查令|.{0,3}交出财物.{0,6}|.{1,5}生效法律.{1,4}行为.{0,6}" + "|折价赔偿.*财产.{1,5}|代为完成.*"
 							+ "|.{1,3}追回财物.{1,6}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return auctionProceduresForRealizationOfProperty;
-					    }
-//					    return auctionProceduresForRealizationOfPropertyFront;
-					//}
-					            
+						return auctionProceduresForRealizationOfProperty;
+					}
 
 					if (txt.matches(".{0,7}执行争议.*|.*利害关系.*|案外人.*|复议执行.{1,4}"
 							+ "|督促执行令|.*下级法院.*|.*暂缓执行.*|.*非诉法律文书.*|.*执行裁定.*")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return ProcessingExecutionDisputeBooks;
-					    }
-//					    return ProcessingExecutionDisputeBooksFront;
-					//}
-					            
+						return ProcessingExecutionDisputeBooks;
+					}
 
 					if (txt.matches("执行款过户手续.{2}|领款审批表")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return ExecutiveShallTransferProcedures;
-					    }
-//					    return ExecutiveShallTransferProceduresFront;
-					//}
-					            
+						return ExecutiveShallTransferProcedures;
+					}
 
 					if (txt.matches("执行回转.{1}")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return Swivel;
-					    }
-//					    return SwivelFront;
-					//}
-					            
+						return Swivel;
+					}
 
 					if (txt.matches("结案.{0,2}通知.{0,2}书")) {
-//					    if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-					        return NotificationClosed;
-					    }
-//					    return NotificationClosedFront;
-					//}
+						return NotificationClosed;
+					}
 				}
 			}
 			if (lineNum > 3) {
@@ -973,8 +803,7 @@ public class Document implements FileCode {
 						+ "|负责人：.*|.?社区矫正对.{2,6}|[辨辩]护[人儿].{2,4}|年月[日曰门]|谢谢|检察员:."
 						+ "|.{3,10}人[民尺].?[院浣脘][^起诉]{0,7}|.{2,5}司.局|.{3,9}挥部"
 						+ "|.{2,8}办公室.{1,6}[耳年].{0,3}[月目用门].{0,4}[口日曰白门].{0,4}|.{0,4}市.{2,7}民法.?"
-						+ "|.{1,6}[耳年].{0,3}[月目用门].?[\\d].{0,2}|[\\d]{3,5}年.{2,7}"
-						+ "|.{1,3}[市币].{1,3}区人民.{1,5}")) {
+						+ "|.{1,6}[耳年].{0,3}[月目用门].?[\\d].{0,2}|[\\d]{3,5}年.{2,7}" + "|.{1,3}[市币].{1,3}区人民.{1,5}")) {
 					return end;
 				}
 
