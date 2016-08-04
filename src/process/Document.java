@@ -386,7 +386,7 @@ public class Document implements FileCode {
 						return protestFront;
 					}
 
-					if (txt.matches(".{0,8}[诉讲拆][状书].{0,3}|.*加.{0,2}讼.{0,10}|.*诉讼申.*|.{0,6}再.申请[书]{0,1}"
+					if (txt.matches(".{0,8}[诉讲拆][状书].*|.*加.{0,2}讼.{0,10}|.*诉讼申.*|.{0,6}再.申请[书]{0,1}"
 							+ "|.?自述材料.?|.{0,3}附带民事诉|.{0,4}起[诉讲讶拆].{0,3}|[起赳].书")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return indictment;
