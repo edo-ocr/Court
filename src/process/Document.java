@@ -331,7 +331,7 @@ public class Document implements FileCode {
 						return socialSurveyFront;
 					}
 
-					if (txt.matches(".*调解笔录.{0,3}")) {
+					if (txt.matches(".*调.{0,3}笔.{0,3}录.{0,3}")) {
 						return compromise;
 					} else if (txt.matches(".*授.{0,2}[权杈].{0,3}[托抚].?书.{0,4}|.{0,5}委.{1,3}"
 							+ "|委[托抚拄]书编号.{2,7}.{0,5}身[纷份]证[明朋].{0,3}|.{0,2}公.{1,5}.{1,4}[\\d]{7,}.*"
@@ -412,7 +412,7 @@ public class Document implements FileCode {
 						}
 						return "33a";
 					}
-					if (txt.matches(".{0,8}判决书|.*裁.*定|裁定书原稿" + "|.{0,8}民事调解.{0,2}书.*|.{0,8}民事裁定.{0,2}书.*|"
+					if (txt.matches(".{0,8}判决书.*|.*裁.*定|裁定书原稿" + "|.{0,8}民事调.{0,4}书.*|.{0,8}民事裁定.{0,2}书.*|"
 							+ "|.{0,8}民事判决.{0,2}书.*|")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return "19";
@@ -469,7 +469,8 @@ public class Document implements FileCode {
 						return cost;
 					}
 					if (txt.matches(
-							"邮件号码.*|.*投递并签收.*|.*邮.{1,2}号码:.*|运单.程|.*揽投员.*|[送达]达.{0,3}|.*EMS.*" + "|.{0,6}网上寄件.?")) {
+							"邮件号码.*|.*投递并签收.*|.*邮.{1,2}号码:.*|运单.程|.*揽投员.*|.*[送达]达.{0,3}"
+							+ "|.*EMS.*" + "|.{0,6}网上寄件.?|.*送达.*送达.*")) {
 						return proofOfService;
 					}
 					if (txt.matches("保证书|.*担保书|法庭笔录|庭审笔录|法庭审理笔录|.*审判笔录")) {
@@ -490,7 +491,7 @@ public class Document implements FileCode {
 						}
 						return preCourtWorkNoteFront;
 					}
-					if (txt.matches("传[票禀].{0,5}|提.{1,3}")) {
+					if (txt.matches("传[票禀].{0,8}|提.{1,3}")) {
 						return courtSummon;
 					}
 					// -----------------------------------------------------------------
@@ -530,18 +531,18 @@ public class Document implements FileCode {
 						return SimpleProceduresApplyFront;
 					}
 
-					if (txt.matches("送达起诉书.{0,2}笔录")) {
+					if (txt.matches(".*送达起诉书.{0,2}笔录")) {
 						return ServiceOfTheIndictment;
 					}
 
-					if (txt.matches("司法公.{0,2}知书|.*监督.*|诉讼[冈风凤]险.{0,5}")) {
+					if (txt.matches(".*司法公.{0,2}知书|.*监督.*|诉讼[冈风凤]险.{0,5}")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return PublicationOfThisBookJustice;
 						}
 						return PublicationOfThisBookJusticeFront;
 					}
 
-					if (txt.matches("保证书.{5,11}|.{1,3}保.{0,3}候审.{1,3}通知书.{1,6}"
+					if (txt.matches(".*保证书.{5,11}|.{1,3}保.{0,3}候审.{1,3}通知书.{1,6}"
 							+ "|.{0,2}居住.{0,2}通知书.{1,6}|.{1,3}保.{0,3}候审.{1,3}决定书.{1,6}" + "|执行.{0,2}通知书.{0,5}")) {
 						return CompulsoryMeasuresChangeDecision;
 					}
@@ -570,11 +571,11 @@ public class Document implements FileCode {
 						return WithdrawalByPetition;
 					}
 
-					if (txt.matches("[出开]庭通知书.{7}|.{1,4}员出.?法庭通知书|.*告知书|.*合议庭.*成.*员.*通知书")) {
+					if (txt.matches("[出开]庭通知书.{7}|.{1,4}员出.?法庭通知书|.*告知书|.*合议庭.*成.*员.*通知书.*")) {
 						return NoticeOfTheHearing;
 					}
 
-					if (txt.matches(".*公告.{3,8}")) {
+					if (txt.matches(".*公[告古].{0,8}")) {
 						return CourtPapersAnnouncement;
 					}
 
@@ -593,7 +594,7 @@ public class Document implements FileCode {
 						return OriginalJudgmentDocumentFront;
 					}
 
-					if (txt.matches("宣判笔录|.判笔.{2,6}|判后释法笔录")) {
+					if (txt.matches(".{0,2}宣判笔录.{0,3}|.判笔.{2,6}|判后释法笔录")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return SentencingNotes;
 						}
@@ -670,7 +671,7 @@ public class Document implements FileCode {
 						return Juanneimulu;
 					}
 
-					if (txt.matches(".*举证通知书|送达地址确认书|当事.*确认书" + "|电子送达确认书")) {
+					if (txt.matches(".*举证通知书.*|.*送达.*地址.*书.{0,6}|.*当事.*确认书.{0,6}|.*电子送达确认书.*")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return EvidenceAnoticeInTheAddressConfirmation;
 						}
