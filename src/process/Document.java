@@ -380,7 +380,8 @@ public class Document implements FileCode {
 					}
 					if (txt.matches(".{0,5}诉讼代理人推荐函.{0,4}"))
 						return agentRecommendation;
-					if (txt.matches(".{0,6}上诉.{0,6}|.{0,6}抗诉.{0,6}|.{0,3}上诉状.*|行.?上.?状|行政.?诉状.{0,6}")) {
+					if (txt.matches(".{2,6}上诉[^移送].{0,4}|.{0,6}抗诉.{0,6}|.{0,3}上诉状.*|行.?上.?状|行政.?诉状.{0,6}"
+							+ "|.{2,6}上诉.{0,1}状")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return protest;
 						}
@@ -609,7 +610,7 @@ public class Document implements FileCode {
 						return JudicialRecommendationsFront;
 					}
 
-					if (txt.matches("报送上.*抗.{0,4}件.{2,6}")) {
+					if (txt.matches("报送上.*抗.{0,4}件.{2,6}|.{0,2}上诉案件移送函.{0,2}|.{0,2}案件上诉移送函.{0,2}")) {
 						return ReferTheCaseToTheProtestLetter;
 					}
 
