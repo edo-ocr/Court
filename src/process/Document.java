@@ -389,7 +389,8 @@ public class Document implements FileCode {
 					}
 
 					if (txt.matches("^(?!送达).{0,8}[诉讲拆][状书].*|.*加.{0,2}讼.{0,10}|.*诉讼申.*|.{0,6}再.申请[书]{0,1}"
-							+ "|.?自述材料.?|.{0,3}附带民事诉|送达.{0,2}起[诉讲讶拆].{0,3}|[起赳].书")) {
+							+ "自诉状|.?自述材料.?|.{0,3}附带民事诉|送达.{0,2}起[诉讲讶拆].{0,3}|[起赳].书"
+							+"变更诉讼请求申请书|变更起诉决定书")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return indictment;
 						}
@@ -398,7 +399,7 @@ public class Document implements FileCode {
 					if (txt.matches(".{0,7}和解协议[书]?|.{0,3}谅.?书")) {
 						return mediation;
 					}
-					if (txt.matches(".{0,3}[和调]解.{2,3}|调.{0,2}申请书|.{2,6}议书|.{0,2}[谅凉][解牌].{0,2}")) {
+					if (txt.matches(".{0,3}[和调]解.{2,3}|调.{0,2}申请书|.{2,6}议书|.{0,2}[谅凉][解牌].{0,2}|民事赔偿协议书")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return compromise;
 						}
@@ -421,6 +422,8 @@ public class Document implements FileCode {
 						}
 						return "19a";
 					}
+					if (txt.matches(".*执行工作日志"))
+						return "20";
 					if (txt.matches(
 							".{0,3}复议申请书.*|.{0,6}异议申请书|执行异议书.{0,4}|.*行.{0,3}申请书.{0,2}|申请执行书.{0,6}" + "|.{0,2}强制执行.*")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
@@ -430,7 +433,8 @@ public class Document implements FileCode {
 					}
 					if (txt.matches(".{0,1}附.{0,1}"))
 						return end;
-					if (txt.matches("^.{0,2}换[押砷].*|.{0,4}[提捉]讯.{0,5}|换.证.?"))
+					if (txt.matches("^.{0,2}换[押砷].*|.{0,4}[提捉]讯.{0,5}|换.证.?"
+							+ "^拘传票|换[押砷]票|[提捉][押砷]票"))
 						return "21";
 					if (txt.matches(".?证人出庭作证申请书.{0,4}"))
 						return "23";
@@ -493,7 +497,7 @@ public class Document implements FileCode {
 						}
 						return preCourtWorkNoteFront;
 					}
-					if (txt.matches(".?传[票禀].{0,8}|提.{1,3}")) {
+					if (txt.matches(".?传[票禀].{0,8}")) {
 						return courtSummon;
 					}
 					// -----------------------------------------------------------------
@@ -614,7 +618,7 @@ public class Document implements FileCode {
 						return ReferTheCaseToTheProtestLetter;
 					}
 
-					if (txt.matches(".*退.*卷.*函.*")) {
+					if (txt.matches(".*退.*卷.*函.*|.?卷函")) {
 						return UnwindingLetter;
 					}
 
@@ -673,7 +677,7 @@ public class Document implements FileCode {
 						return Juanneimulu;
 					}
 
-					if (txt.matches(".*举证通知书.*|.*送达.*地址.*书.{0,6}|.*当事.*确认书.{0,6}|.*电子送达确认书.*")) {
+					if (txt.matches(".*举证通知书.*|.*电子送达确认书.*")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return EvidenceAnoticeInTheAddressConfirmation;
 						}
