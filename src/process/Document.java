@@ -418,8 +418,8 @@ public class Document implements FileCode {
 						}
 						return "33a";
 					}
-					if (txt.matches(".{0,8}判[决泱]书.*|.*裁.*定|裁定书原稿|.{0,8}民事调.{0,4}书.*|.{0,8}民事裁定.{0,2}书.*"
-							+ "|.{0,8}民.?判[决泱].{0,2}书.*|民.?判[决泱].?")) {
+					if (txt.matches(".{0,8}判[决泱]书.?|.*裁.*定|裁定书原稿|.{0,8}民事调.{0,4}书.?|.{0,8}民事裁定.{0,2}书.*"
+							+ "|.{0,8}民.?判[决泱].{0,2}书.?|民.?判[决泱].?")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return "19";
 						}
@@ -622,7 +622,7 @@ public class Document implements FileCode {
 					}
 
 					if (txt.matches("报送上.*抗.{0,4}件.{2,6}|.{0,2}上诉案件移送函.{0,2}|.{0,2}案件上诉移送函.{0,2}"
-							+ "|.?案件移送函.?|.?报送上.?抗.?.?案件.?")) {
+							+ "|.?案件移送函.?|.?报送上.?抗.?.?案件.?|.?报送上诉案件函{0,1}.?")) {
 						return ReferTheCaseToTheProtestLetter;
 					}
 
