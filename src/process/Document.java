@@ -316,7 +316,7 @@ public class Document implements FileCode {
 						}
 						return supersedeasFront;
 					}
-					if (txt.matches(".*答.?[辨辩]状.{0,6}|.*答.?[辨辩]意见.{0,6}|行[政正].?答.{2,4}")) {
+					if (txt.matches(".{0,2}答.?[辨辩]状.{0,6}|.*答.?[辨辩]意见.{0,6}|行[政正].?答.{2,4}")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return answer;
 						}
@@ -334,7 +334,8 @@ public class Document implements FileCode {
 
 					if (txt.matches(".*调.{0,3}笔.{0,3}录.{0,3}")) {
 						return compromise;
-					} else if (txt.matches(".*授.{0,2}[权杈].{0,3}[托抚].?书.{0,4}|.{0,5}委.{1,3}"
+					} else if (txt.matches(".*授.{0,2}[权杈].{0,3}[托抚].?书.{0,4}"
+							+ "|.{0,5}委.{1,3}"
 							+ "|委[托抚拄]书编号.{2,7}.{0,5}身[纷份]证[明朋].{0,3}|.{0,2}公.{1,5}.{1,4}[\\d]{7,}.*"
 							+ "|.*律.{2,5}所[^信]?函.{0,6}|法人身[纷份]证.*|.*代码信息.*|.*执业证类别.*"
 							+ "|.*有限公司注册.*一社会信用.*[\\d]{6,}|.{0,3}[法定代表人身[纷份]证复印件]{5,}.{0,4}"
@@ -342,7 +343,8 @@ public class Document implements FileCode {
 							+ "|执业证.*|.{0,4}居民户口簿.*|.?推荐信.?|[授投]权书|.{0,8}法人证书|.*度.{0,3}核备.*"
 							+ "|.{0,3}注册号[\\d]{7,18}.{0,3}|.{0,3}登记项目|.{2,6}证[明朋]|.?组织.构代码证.*|中华人民共和.?国.?"
 							+ "|律.{2,5}所[^信]?函.{0,5}第.{1,6}号|.{2,8}律师事务所|营.[执捌]照|.*统一社会信用代.*"
-							+ "|亍聿师事.{1,4}所函|.{0,6}律师事.{1,3}函|.{0,6}律师事务.{0,4}|授[权衩杈]委.{2,6}|.{0,4}身[份伯]证明.?|.*一[社祉]会信用代.*"
+							+ "|亍聿师事.{1,4}所函|.{0,6}律师事.{1,3}函|.{0,6}律师事务.{0,4}|授[权衩杈]委.{2,6}"
+							+ "|.{0,4}身[份伯]证明.?|.*一[社祉]会信用代.*"
 							+ "|.{1,3}身.?号码[\\d]{7,}|.明|法人(代表)?.?[证正]明.{0,6}|.?授.{1,3}" + "|律师.?务所名称.{2,9}")) {
 						return identification;
 					}
@@ -415,8 +417,8 @@ public class Document implements FileCode {
 						}
 						return "33a";
 					}
-					if (txt.matches(".{0,8}判决书.*|.*裁.*定|裁定书原稿|.{0,8}民事调.{0,4}书.*|.{0,8}民事裁定.{0,2}书.*"
-							+ "|.{0,8}民事判决.{0,2}书.*")) {
+					if (txt.matches(".{0,8}判[决泱]书.*|.*裁.*定|裁定书原稿|.{0,8}民事调.{0,4}书.*|.{0,8}民事裁定.{0,2}书.*"
+							+ "|.{0,8}民.?判[决泱].{0,2}书.*|民.?判[决泱].?")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return "19";
 						}
@@ -479,7 +481,7 @@ public class Document implements FileCode {
 							+ "|.*EMS.*" + "|.{0,6}网上寄件.?|.*送达.*送达.*")) {
 						return proofOfService;
 					}
-					if (txt.matches("保证书|.*担保书|法庭笔录|庭审笔录.?|法庭审理笔录|.*审判笔录")) {
+					if (txt.matches("保证书|.*担保书|法庭笔录|庭审笔录.?|法庭审理笔录|.*审判笔录|.?开庭笔录.?")) {
 						if ((fileEndCheck(img, row, 0.2D)) || (endCheck(img, row))) {
 							return guarantee;
 						}
@@ -541,7 +543,7 @@ public class Document implements FileCode {
 						return ServiceOfTheIndictment;
 					}
 
-					if (txt.matches(".*司法公.{0,2}知书|.*监督.*|.*诉讼[冈风凤]险.{0,5}")) {
+					if (txt.matches(".{0,2}司法公.{0,2}知书.?|.{0,3}监督.{0,2}|.*诉讼[冈风凤]险.{0,5}")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return PublicationOfThisBookJustice;
 						}
@@ -614,7 +616,8 @@ public class Document implements FileCode {
 						return JudicialRecommendationsFront;
 					}
 
-					if (txt.matches("报送上.*抗.{0,4}件.{2,6}|.{0,2}上诉案件移送函.{0,2}|.{0,2}案件上诉移送函.{0,2}")) {
+					if (txt.matches("报送上.*抗.{0,4}件.{2,6}|.{0,2}上诉案件移送函.{0,2}|.{0,2}案件上诉移送函.{0,2}"
+							+ "|.?案件移送函.?|.?报送上.?抗.?.?案件.?")) {
 						return ReferTheCaseToTheProtestLetter;
 					}
 
