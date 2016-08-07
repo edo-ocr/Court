@@ -542,8 +542,12 @@ public class Document implements FileCode {
 					if (txt.matches(".*送达起诉书.{0,2}笔录")) {
 						return ServiceOfTheIndictment;
 					}
+					
 
-					if (txt.matches(".{0,2}司法公.{0,2}知书.?|.{0,3}监督.{0,2}|.*诉讼[冈风凤]险.{0,5}")) {
+					if (txt.matches(".{0,2}司法公.{0,2}知书.?")) {
+						return PublicationOfThisBookJusticeFront;
+					}
+					if (txt.matches(".{0,3}监督.{0,2}|.*诉讼[冈风凤]险.{0,5}")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return PublicationOfThisBookJustice;
 						}
@@ -680,6 +684,10 @@ public class Document implements FileCode {
 						return Juanneimulu;
 					}
 
+					if (txt.matches(".*送达.*地址.*书.{0,6}|.*当事.*确认书.{0,6}")) {
+							return EvidenceAnoticeInTheAddressConfirmation;
+						}
+					
 					if (txt.matches(".*举证通知书.*|.*电子送达确认书.*")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return EvidenceAnoticeInTheAddressConfirmation;
