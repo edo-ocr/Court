@@ -485,8 +485,8 @@ public class Document implements FileCode {
 							+ "|.*EMS.*" + "|.{0,6}网上寄件.?|.*送达.*送达.*")) {
 						return proofOfService;
 					}
-					if (txt.matches("保证书|.*担保书|法庭笔录|庭审笔录.?|法庭审[理埋]笔录|.*审判笔录|.?开庭笔录.?"
-							+"法庭审王里笔录|.?是否公开.?公开审理|.?是否公开.?不公开审理")) {
+					if (txt.matches(".?保证书.?|.*担保书|.?法庭笔录.?|.?庭审笔录.?|.?法庭审[理埋]笔录|.*审判笔录|.?开庭笔录.?"
+							+".?法庭审王里笔录|.?是否公开.?公开审理|.?是否公开.?不公开审理")) {
 						if ((fileEndCheck(img, row, 0.2D)) || (endCheck(img, row))) {
 							return guarantee;
 						}
