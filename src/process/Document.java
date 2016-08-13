@@ -395,7 +395,7 @@ public class Document implements FileCode {
 					}
 
 					if (txt.matches("[^送达]{0,8}[诉讲拆][状书].{0,5}|.*加.{0,2}讼.{0,10}|.*诉讼申.*|.{0,6}再.申请[书]{0,1}自诉状"
-							+ "|.?自述材料.?|.{0,3}附带民事诉|送达.{0,2}起[诉讲讶拆].{0,3}|[起赳].书|"
+							+ "|.?自述材料.?|.{0,3}附带民事诉.?|.?送达.{0,2}起[诉讲讶拆].{0,3}|[起赳].书|"
 							+".?变更诉讼请求申请书.?|.?变更起诉决定书.?|.?诉讼请求申请.?")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return indictment;
@@ -412,10 +412,10 @@ public class Document implements FileCode {
 						return compromiseFront;
 					}
 
-					if (txt.matches(".?执行通知书.{0,5}|.{3,8}发还裁决款审批表|.{0,5}收.?条")) {
+					if (txt.matches(".?执行通知书.{0,5}|.{3,8}发还裁决款审批表.?|.{0,5}收.?条")) {
 						return "33";
 					}
-					if (txt.matches(".*保全申请书|.*账户信息|.{0,3}矫正告知书|.{0,4}矫正人员.{2,5}通知单")) {
+					if (txt.matches(".*保全申请书.?|.*账户信息.?|.{0,3}矫正告知书.?|.{0,4}矫正人员.{2,5}通知单")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return "33";
 						}
@@ -428,10 +428,10 @@ public class Document implements FileCode {
 						}
 						return judgementFront;
 					}
-					if (txt.matches(".*执行工作日志"))
+					if (txt.matches(".*执行工作日志.?"))
 						return "20";
 					if (txt.matches(
-							".{0,3}复议申请书.*|.{0,6}异议申请书|执行异议书.{0,4}|.*行.{0,3}申请书.{0,2}|申请执行书.{0,6}" + "|.{0,2}强制执行.*")) {
+							".{0,3}复议申请书.*|.{0,6}异议申请书.?|执行异议书.{0,4}|.*行.{0,3}申请书.{0,2}|申请执行书.{0,6}" + "|.{0,2}强制执行.*")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return execution;
 						}
@@ -440,7 +440,7 @@ public class Document implements FileCode {
 					if (txt.matches(".{0,1}附.{0,1}"))
 						return end;
 					if (txt.matches("^.{0,2}换[押砷].*|.{0,4}[提捉]讯.{0,5}|换.证.?"
-							+ "^拘传票|换[押砷]票|[提捉][押砷]票"))
+							+ "^拘传票|.?换[押砷]票.?|[提捉][押砷]票.?"))
 						return "21";
 					if (txt.matches(".?证人出庭作证申请书.{0,4}"))
 						return "23";
@@ -564,11 +564,11 @@ public class Document implements FileCode {
 						return CompulsoryMeasuresChangeDecision;
 					}
 
-					if (txt.matches("查封.{3,7}财产.{1,7}|查询存款函.{1,6}|诉讼保全.{0,3}")) {
+					if (txt.matches(".?查封.{3,7}财产.{1,7}|.?查询存款函.{1,6}|诉讼保全.{0,3}")) {
 						return LitigationHolds;
 					}
 
-					if (txt.matches("准许调[取查].{0,3}[书令].{0,4}")) {
+					if (txt.matches(".?准许调[取查].{0,3}[书令].{0,4}")) {
 						return PermitTheTransferOfEvidence;
 					}
 
@@ -611,7 +611,7 @@ public class Document implements FileCode {
 						return OriginalJudgmentDocumentFront;
 					}
 
-					if (txt.matches(".{0,2}宣判笔录.{0,3}|.判笔.{2,6}|判后释法笔录")) {
+					if (txt.matches(".{0,2}宣判笔录.{0,3}|.判笔.{2,6}|判后释法笔录.?")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return SentencingNotes;
 						}
@@ -630,7 +630,7 @@ public class Document implements FileCode {
 						return ReferTheCaseToTheProtestLetter;
 					}
 
-					if (txt.matches(".*退.*卷.*函.*|.?卷函")) {
+					if (txt.matches(".*退.*卷.*函.*|.?卷函.?")) {
 						return UnwindingLetter;
 					}
 
