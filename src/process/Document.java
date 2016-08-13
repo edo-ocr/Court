@@ -169,7 +169,7 @@ public class Document implements FileCode {
 				if (txt.matches(".{0,2}[此北]致.{0,5}|.{0,2}具状.*|.{0,2}原告人.*|.{0,2}申请.{2,6}|.{0,2}答[辨辩].{2,6}"
 						+ "|.{1,8}[耳年].*[月目用门].*[口日曰白门].{0,3}|.{3,10}[人八]民法[阮院].{0,2}|.{0,1}附.{0,1}"
 						+ "|.*起诉人:.*|.{1,6}人:.{2,4}|[此北].|.{0,2}[上公]诉[人八]:.{1,4}|[申巾]请[人八]：.{0,3}"
-						+ "|法定代表.{0,3}[(]印[章童][)]|.*法律服务所|.*律[师帅]事务所|.{1,10}律师|.?[窜审]判[长员].{1,5}"
+						+ "|.?法定代表.{0,3}[(]印[章童][)]|.*法律服务所|.*律[师帅]事务所|.{1,10}律师|.?[窜审]判[长员].{1,5}"
 						+ "|.{2,8}局|负责人:.*|[辨辩]护[人儿].{2,4}|年月[日曰门]|谢谢|检察员:.*|.{2,6}[市巾]级.{0,3}法院.{0,4}")) {
 					System.out.println("file end feature");
 					return true;
@@ -347,7 +347,7 @@ public class Document implements FileCode {
 							+ "|亍聿师事.{1,4}所函|.{0,6}律师事.{1,3}函|.{0,6}律师事务.{0,4}|授[权衩杈]委.{2,6}"
 							+ "|.{0,4}身[份伯]证明.?|.*一[社祉]会信用代.*"
 							+ "|.{1,3}身.?号码[\\d]{7,}|.明|法人(代表)?.?[证正]明.{0,6}|.?授.{1,3}" + "|律师.?务所名称.{2,9}"
-							+ "|法律工作者证|组织机构代码证|统一社会信用代码|推荐信|法律服务所.{0,3}")) {
+							+ "|法律工作者证|组织机构代码证|统一社会信用代码|推荐信|法律服务所.{0,3}|.?委托书编号.?")) {
 						return identification;
 					}
 
@@ -396,7 +396,7 @@ public class Document implements FileCode {
 
 					if (txt.matches("[^送达]{0,8}[诉讲拆][状书].{0,5}|.*加.{0,2}讼.{0,10}|.*诉讼申.*|.{0,6}再.申请[书]{0,1}自诉状"
 							+ "|.?自述材料.?|.{0,3}附带民事诉|送达.{0,2}起[诉讲讶拆].{0,3}|[起赳].书|"
-							+"变更诉讼请求申请书|变更起诉决定书|诉讼请求申请")) {
+							+".?变更诉讼请求申请书.?|.?变更起诉决定书.?|.?诉讼请求申请.?")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return indictment;
 						}
@@ -405,14 +405,14 @@ public class Document implements FileCode {
 					if (txt.matches(".{0,7}和解协议[书]?|.{0,3}谅.?书")) {
 						return mediation;
 					}
-					if (txt.matches(".{0,3}[和调]解.{2,3}|调.{0,2}申请书|.{2,6}议书|.{0,2}[谅凉][解牌].{0,2}|民事赔偿协议书")) {
+					if (txt.matches(".{0,3}[和调]解.{2,3}|调.{0,2}申请书|.{2,6}议书|.{0,2}[谅凉][解牌].{0,2}|.?民事赔偿协议书.?")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return compromise;
 						}
 						return compromiseFront;
 					}
 
-					if (txt.matches("执行通知书.{0,5}|.{3,8}发还裁决款审批表|.{0,5}收.?条")) {
+					if (txt.matches(".?执行通知书.{0,5}|.{3,8}发还裁决款审批表|.{0,5}收.?条")) {
 						return "33";
 					}
 					if (txt.matches(".*保全申请书|.*账户信息|.{0,3}矫正告知书|.{0,4}矫正人员.{2,5}通知单")) {
@@ -421,7 +421,7 @@ public class Document implements FileCode {
 						}
 						return "33a";
 					}
-					if (txt.matches(".{0,8}判[决泱]书.?|.{0,3}裁.{0,3}定.{0,3}|裁定书原稿|.{0,8}民事调.{0,4}书.?|.{0,8}民事裁定.{0,2}书.*"
+					if (txt.matches(".{0,8}判[决泱]书.?|.{0,3}裁.{0,3}定.{0,3}|.?裁定书原稿.?|.{0,8}民事调.{0,4}书.?|.{0,8}民事裁定.{0,2}书.*"
 							+ "|.{0,8}民.?判[决泱].{0,2}书.?|民.?判[决泱].?")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return judgement;
@@ -467,7 +467,7 @@ public class Document implements FileCode {
 						return propertyInvestigation;
 					if (txt.matches(".{0,2}案申[清请]"))
 						return "28";
-					if (txt.matches("执行笔录")) {
+					if (txt.matches(".?执行笔录.?")) {
 						if ((fileEndCheck(img, row, 0.2D)) || (endCheck(img, row))) {
 							return "29";
 						}
@@ -485,20 +485,20 @@ public class Document implements FileCode {
 							+ "|.*EMS.*" + "|.{0,6}网上寄件.?|.*送达.*送达.*")) {
 						return proofOfService;
 					}
-					if (txt.matches(".?保证书.?|.*担保书|.?法庭笔录.?|.?庭审笔录.?|.?法庭审[理埋]笔录|.*审判笔录|.?开庭笔录.?"
-							+".?法庭审王里笔录|.?是否公开.?公开审理|.?是否公开.?不公开审理")) {
+					if (txt.matches(".?保证书.?|.*担保书|.?法庭笔录.?|.?庭审笔录.?|.?法庭审[理埋]笔录.?|.*审判笔录|.?开庭笔录.?"
+							+".?法庭审王里笔录.?|.?是否公开.?公开审理|.?是否公开.?不公开审理")) {
 						if ((fileEndCheck(img, row, 0.2D)) || (endCheck(img, row))) {
 							return guarantee;
 						}
 						return guaranteeFront;
 					}
-					if (txt.matches("庭前会议笔录|证据交换笔录")) {
+					if (txt.matches(".?庭前会议笔录.?|.?证据交换笔录.?")) {
 						if ((fileEndCheck(img, row, 0.2D)) || (endCheck(img, row))) {
 							return preCourtConferenceNote;
 						}
 						return preCourtConferenceNoteFront;
 					}
-					if (txt.matches("庭前工作笔录")) {
+					if (txt.matches(".?庭前工作笔录.?|.?庭前.?准.?备.?工作记录.?")) {
 						if ((fileEndCheck(img, row, 0.2D)) || (endCheck(img, row))) {
 							return preCourtWorkNote;
 						}
@@ -512,13 +512,13 @@ public class Document implements FileCode {
 						return exchangeOfNotes;
 					}
 
-					if (txt.matches(".{1,7}案件.{1,7}流.*管理.{1,3}|.*立案登记表.{1,6}|立案审批表|.*案件.*审判流.*"
+					if (txt.matches(".{1,7}案件.{1,7}流.*管理.{1,3}|.*立案登记表.{1,6}|.?立案审批表.?|.*案件.*审判流.*"
 							+ "|.*立案.*理.*息|.*案件.*立案.*审.*")) {
 
 						return CaseFlow;
 					}
 
-					if (txt.matches("改变管辖通知书.{1,7}|.*指定管辖决定书.*")) {
+					if (txt.matches(".?改变管辖通知书.{1,7}|.*指定管辖决定书.*")) {
 
 						return NoticeOfChangeInJurisdiction;
 					}
@@ -576,11 +576,11 @@ public class Document implements FileCode {
 						return ExpertConclusions;
 					}
 
-					if (txt.matches("被告人坦白.{0,5}问题登记表|查证材料")) {
+					if (txt.matches(".?被告人坦白.{0,5}问题登记表.?|.?查证材料.?")) {
 						return RegistrationFormAndCheckMaterial;
 					}
 
-					if (txt.matches("限制出境决定书.{7}")) {
+					if (txt.matches(".?限制出境决定书.{7}")) {
 						return RestrictExitDecision;
 					}
 
@@ -650,11 +650,11 @@ public class Document implements FileCode {
 						return NotesExecutions;
 					}
 
-					if (txt.matches(".*执行死刑报告")) {
+					if (txt.matches(".?执行死刑报告.?")) {
 						return ExecutionReport;
 					}
 
-					if (txt.matches("死刑罪犯照片")) {
+					if (txt.matches(".?死刑罪犯照片.?")) {
 						return ExecutionsBeforeAndAfterPhotos;
 					}
 
@@ -662,7 +662,7 @@ public class Document implements FileCode {
 						return CondemnedFamiliesReceiveAshes;
 					}
 
-					if (txt.matches(".*尸体处理登记表.*")) {
+					if (txt.matches(".?尸体处理登记表.?")) {
 						return CarcassDisposalRegistrationForm;
 					}
 
@@ -681,11 +681,11 @@ public class Document implements FileCode {
 						return CommutationParoleRulingFront;
 					}
 
-					if (txt.matches(".*备考表.*")) {
+					if (txt.matches(".?备考表.?")) {
 						return RemarksTable;
 					}
 
-					if (txt.matches(".*卷内目录.*")) {
+					if (txt.matches(".?卷内目录.?")) {
 						return Juanneimulu;
 					}
 
@@ -711,7 +711,7 @@ public class Document implements FileCode {
 						return EvidenceChangeNoticePeriod;
 					}
 
-					if (txt.matches("申请.*程序.{2,4}|转换程序通知书|民事.{1,6}程序.{1,3}程序.{1,2}")) {
+					if (txt.matches("申请.*程序.{2,4}|.?转换程序通知书.?|民事.{1,6}程序.{1,3}程序.{1,2}")) {
 						return ChangeTheOrdinaryProcedureForApproval;
 					}
 
@@ -738,20 +738,20 @@ public class Document implements FileCode {
 						return TheImplementationProcessOfThisBook;
 					}
 
-					if (txt.matches("由法院.*有关财产.{4,8}|.{1,3}拍卖措施.{1,3}|.*成交确认.{0,4}"
-							+ "|.*变卖措施.{1,4}|.*以物抵债.{1,5}|鉴定委托书|价格评估委托书|拍卖.{0,3}卖.*委托书"
-							+ "|拍卖通知书|查封公告|查封.{4,8}财产清单|拍卖公告|.*迁出房屋.{0,2}退出土地.{0,3}"
-							+ "|搜查令|.{0,3}交出财物.{0,6}|.{1,5}生效法律.{1,4}行为.{0,6}" + "|折价赔偿.*财产.{1,5}|代为完成.*"
+					if (txt.matches(".?由法院.*有关财产.{4,8}|.{1,3}拍卖措施.{1,3}|.*成交确认.{0,4}"
+							+ "|.*变卖措施.{1,4}|.*以物抵债.{1,5}|.?鉴定委托书.?|.?价格评估委托书.?|.?拍卖.{0,3}卖.*委托书"
+							+ "|.?拍卖通知书.?|.?查封公告.?|查封.{4,8}财产清单|.?拍卖公告.?|.*迁出房屋.{0,2}退出土地.{0,3}"
+							+ "|.?搜查令.?|.{0,3}交出财物.{0,6}|.{1,5}生效法律.{1,4}行为.{0,6}" + "|折价赔偿.*财产.{1,5}|代为完成.*"
 							+ "|.{1,3}追回财物.{1,6}")) {
 						return auctionProceduresForRealizationOfProperty;
 					}
 
 					if (txt.matches(".{0,7}执行争议.*|.*利害关系.*|案外人.*|复议执行.{1,4}"
-							+ "|督促执行令|.*下级法院.*|.*暂缓执行.*|.*非诉法律文书.*|.*执行裁定.*")) {
+							+ "|.?督促执行令.?|.*下级法院.*|.*暂缓执行.*|.*非诉法律文书.*|.*执行裁定.*")) {
 						return ProcessingExecutionDisputeBooks;
 					}
 
-					if (txt.matches("执行款过户手续.{2}|领款审批表")) {
+					if (txt.matches(".?执行款过户手续.{2}|领款审批表.?")) {
 						return ExecutiveShallTransferProcedures;
 					}
 
