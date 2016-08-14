@@ -575,6 +575,16 @@ public class Main implements FileCode {
 				writeFile(args[1], NotificationClosed);
 				System.out.println(file.getName() + "——结案通知书");
 				break;
+				
+			case LitigationRightsAndObligationsOfThisBook:
+				writeFile(args[1], LitigationRightsAndObligationsOfThisBook);
+				System.out.println(file.getName() + "——诉讼权利义务告知书");
+				break;
+				
+			case UnderwritingNotes:
+				writeFile(args[1], UnderwritingNotes);
+				System.out.println(file.getName() + "——核保笔录");
+				break;
 
 			// -------------------------------------------------------------------
 			default:

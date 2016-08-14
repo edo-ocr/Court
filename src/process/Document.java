@@ -370,11 +370,12 @@ public class Document implements FileCode {
 						}
 						return defenseFront;
 					}
-					if (txt.matches(".{0,6}[代筏].?词.?|.*代理意见.{0,3}|.*代[王壬][里理]词|.*代[王壬]里意见.{0,3}")) {
+					if (txt.matches(".{0,6}[代筏].?词.?|.*代理意见.{0,3}|.*代[王壬][里理]词.?|.*代[王壬]里意见.{0,3}"
+							+ "|.?分割意见.?")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
-							return "7";
+							return representative;
 						}
-						return "7a";
+						return representativeFront;
 					}
 					if (txt.matches(".{0,7}[冉再][审窜].{0,4}|.{0,8}申诉.{1,3}")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
@@ -444,9 +445,9 @@ public class Document implements FileCode {
 						return "21";
 					if (txt.matches(".?证人出庭作证申请书.{0,4}"))
 						return "23";
-					if (txt.matches(".?委托宣判函.{0,4}"))
-						return "24";
-					if (txt.matches(".问.录")) {
+//					if (txt.matches(".?委托宣判函.{0,4}"))
+//						return "24";
+					if (txt.matches(".问.录|.?询问笔录.?")) {
 						if ((fileEndCheck(img, row, 0.06D)) || (endCheck(img, row))) {
 							return "14";
 						}
@@ -477,7 +478,7 @@ public class Document implements FileCode {
 						return "34";
 					if (txt.matches(".{0,3}延期审理.{0,5}"))
 						return "35";
-					if (txt.matches(".*讼费收.{0,2}|.*诉讼费专用票据.*")) {
+					if (txt.matches(".*讼费收.{0,2}|.*诉讼费专用票据.*|.?减.{0,2}交.*纳.*诉.*讼.?申请书.?|.?减.?免.?缓.?审批表.?")) {
 						return cost;
 					}
 					if (txt.matches(
@@ -528,7 +529,7 @@ public class Document implements FileCode {
 					//
 					// return FilingNoticeOfAcceptance;
 					// }
-					if (txt.matches(".{0,8}[立案|应诉|应拆].?知书.{0,5}|.*补充材料通知书.{0,5}")) {
+					if (txt.matches(".{0,8}[立案|应诉|应拆|诉讼].?知书.{0,5}|.*补充材料通知书.{0,5}")) {
 
 						return FilingNoticeOfAcceptance;
 					}
@@ -604,14 +605,14 @@ public class Document implements FileCode {
 						return PrejudiceCriminalProceedingsDetention;
 					}
 
-					if (txt.matches("刑事裁定书.*准许.{0,5}|.*刑[辜事]判决书.*|.*刑事附带民事.{1,3}")) {
+					if (txt.matches(".?刑事裁定书.*准许.{0,5}|.*刑[辜事]判决书.*|.*刑事附带民事.{1,3}")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return OriginalJudgmentDocument;
 						}
 						return OriginalJudgmentDocumentFront;
 					}
 
-					if (txt.matches(".{0,2}宣判笔录.{0,3}|.判笔.{2,6}|判后释法笔录.?")) {
+					if (txt.matches(".{0,2}宣判笔录.{0,3}|.判笔.{2,6}|.?判后释法笔录.?|.?委托宣判函.{0,4}")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return SentencingNotes;
 						}
@@ -626,7 +627,7 @@ public class Document implements FileCode {
 					}
 
 					if (txt.matches("报送上.*抗.{0,4}件.{2,6}|.{0,2}上诉案件移送函.{0,2}|.{0,2}案件上诉移送函.{0,2}"
-							+ "|.?案件移送函.?|.?报送上.?抗.?.?案件.?|.?报送上诉案件函{0,1}.?")) {
+							+ "|.?案件移送函.?|.?报送上.?抗.?.?案件.?|.?报送上诉案件函{0,1}.?|.?上诉移送函.?")) {
 						return ReferTheCaseToTheProtestLetter;
 					}
 
@@ -666,11 +667,11 @@ public class Document implements FileCode {
 						return CarcassDisposalRegistrationForm;
 					}
 
-					if (txt.matches("执行通知书.{3,10}用.?|减刑执行通知书.*用.?" + "|释放通知书.{3,10}用.?|假释执行通知书.*用.?")) {
+					if (txt.matches(".?执行通知书.{3,10}用.?|减刑执行通知书.*用.?" + "|释放通知书.{3,10}用.?|假释执行通知书.*用.?")) {
 						return EnforcementNotice;
 					}
 
-					if (txt.matches("发还财物品清单.{1,6}")) {
+					if (txt.matches(".?发还财物品清单.{1,6}")) {
 						return evidenceHandlingProceduresAndMaterialTransferList;
 					}
 
@@ -719,7 +720,7 @@ public class Document implements FileCode {
 						return EvidenceHandlingProcedures;
 					}
 
-					if (txt.matches(".*受.?[里理]通知书|驳回申诉")) {
+					if (txt.matches(".*受.?[里理]通知书.?|.?驳回申诉.?|.?受.?案件通知书.?|")) {
 						return CaseAcceptanceNotice;
 					}
 
@@ -761,6 +762,14 @@ public class Document implements FileCode {
 
 					if (txt.matches(".*结案.{0,2}通知.{0,2}书")) {
 						return NotificationClosed;
+					}
+					
+					if (txt.matches(".*诉.*.*权.*利.*义.*.*告.*知.*书.*")) {
+						return LitigationRightsAndObligationsOfThisBook;
+					}
+					
+					if (txt.matches(".?核保笔录.?")) {
+						return UnderwritingNotes;
 					}
 				}
 			}

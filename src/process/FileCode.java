@@ -125,4 +125,6 @@ public abstract interface FileCode {
 	public static final String ExecutiveShallTransferProcedures = "92";
 	public static final String Swivel = "93";
 	public static final String NotificationClosed = "94";
+	public static final String LitigationRightsAndObligationsOfThisBook = "95";
+	public static final String UnderwritingNotes = "96";
 }
