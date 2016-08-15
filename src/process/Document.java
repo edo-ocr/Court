@@ -721,7 +721,7 @@ public class Document implements FileCode {
 						return EvidenceHandlingProcedures;
 					}
 
-					if (txt.matches(".*受.?[里理]通知书.?|.?驳回申诉.?|.?受.?案件通知书.?|")) {
+					if (txt.matches(".*受.?[里理]通知书.?|.?驳回申诉.?|.?受.?案件通知书.?")) {
 						return CaseAcceptanceNotice;
 					}
 
