@@ -90,7 +90,7 @@ public class Receipt implements FileCode {
 				WhiteCount ++;
 			}
 		}
-		if (WhiteCount/total > 0.999) {
+		if (WhiteCount/total > 0.99) {
 			return blank;
 		}
 		if (((BCount / total > 0.03D) && (BOCount / total > 0.0012D)) || (OCount / total > 0.03D))
