@@ -245,7 +245,7 @@ public class Document implements FileCode {
 				}
 				System.out.println("1_" + txt);
 				imgFile.delete();
-				if (txt.matches(".*[仲伸]裁委[员贝].{1,3}")) {
+				if (txt.matches(".*[仲伸]裁委[员贝].{1,3}|.?法律文书生效证明.?")) {
 					int num = 0;
 					for (int y2 = down + 1; y2 < h; y2++) {
 						for (int i = y2; i < h; i++) {
