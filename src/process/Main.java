@@ -585,6 +585,11 @@ public class Main implements FileCode {
 				writeFile(args[1], UnderwritingNotes);
 				System.out.println(file.getName() + "——核保笔录");
 				break;
+				
+			case LitigationPreservationCaseIsTransferredTable:
+				writeFile(args[1], LitigationPreservationCaseIsTransferredTable);
+				System.out.println(file.getName() + "——诉讼保全案件移送表");
+				break;
 
 			// -------------------------------------------------------------------
 			default:

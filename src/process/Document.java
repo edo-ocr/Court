@@ -772,6 +772,10 @@ public class Document implements FileCode {
 					if (txt.matches(".?核保笔录.?")) {
 						return UnderwritingNotes;
 					}
+					
+					if (txt.matches(".*诉讼保全案件移送表.?")) {
+						return LitigationPreservationCaseIsTransferredTable;
+					}
 				}
 			}
 			if (lineNum > 3) {
