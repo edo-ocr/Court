@@ -34,7 +34,7 @@ public class Receipt implements FileCode {
 		int r = color.getRed();
 		int g = color.getGreen();
 		int b = color.getBlue();
-		if ((r > 100) && (g > 120) && (g < 190) && (b > 160)) {
+		if ((r > 100) && (g > 120) && (g < 200) && (b > 160)) {
 			return true;
 		}
 		return false;
@@ -45,7 +45,7 @@ public class Receipt implements FileCode {
 		int r = color.getRed();
 		int g = color.getGreen();
 		int b = color.getBlue();
-		if ((r > 220) && (g > 110) && (g < 190) && (b < 120)) {
+		if ((r > 220) && (g > 110) && (g < 230) && (b < 120)) {
 			return true;
 		}
 		return false;
@@ -115,7 +115,7 @@ public class Receipt implements FileCode {
 				int[] pixels = new int[h * w];
 				img.getRGB(0, 0, w, h, pixels, 0, w);
 				for (int i = 0; i < h * w; i++) {
-					if (isWhite(pixels[i])) {
+					if (isBOrange(pixels[i])) {
 						count ++;
 					}
 

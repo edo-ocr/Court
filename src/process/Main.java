@@ -36,6 +36,10 @@ public class Main implements FileCode {
 			String result = Document.check(img);
 			System.out.println(result);
 			switch (result) {
+			case blank:
+				writeFile(args[1], blank);
+				System.out.println(file.getName() + "——空白页");
+				break;
 			case evidence:
 				writeFile(args[1], evidence);
 				System.out.println(file.getName() + "——证据");

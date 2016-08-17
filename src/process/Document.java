@@ -192,10 +192,22 @@ public class Document implements FileCode {
 		img = Utils.rectify(pixels);
 		pixels = Utils.binarition(img, 750);
 		pixels = Utils.repair(pixels);
-		img = Utils.pixels2Image(pixels);
-
 		h = img.getHeight();
 		w = img.getWidth();
+		int count = 0;
+		for (int y = 0; y < h; y++) {
+			for (int x = 0; x < w; x++) {
+				if (pixels[y][x] == 1) {
+					count++;
+				}
+			}
+		}
+		if (count / w * h < 0.01) {
+			return blank;
+		}
+		img = Utils.pixels2Image(pixels);
+
+		
 		ArrayList<Integer> seperator = new ArrayList<>();
 		int[] row = new int[h];
 		row = Utils.Tohisto(img, "row");
@@ -216,7 +228,7 @@ public class Document implements FileCode {
 				}
 			}
 			for (int i = y; i < h; i++) {
-				if (row[i] < 13) {
+				if (row[i] < 10 && row[i + 1] < 10) {
 					y = i;
 					down = i + 5 > h - 1 ? h - 1 : i + 5;
 					break;
