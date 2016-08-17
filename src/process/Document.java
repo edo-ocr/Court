@@ -403,7 +403,7 @@ public class Document implements FileCode {
 						}
 						return indictFront;
 					}
-					if (txt.matches(".{0,7}和解协议[书]?|.{0,3}谅.?书")) {
+					if (txt.matches(".{0,7}和解协议[书]?|.{0,3}谅.?书|.{0,7}[禾口|和]解申请[书]?")) {
 						return mediation;
 					}
 					if (txt.matches(".{0,3}[和调]解.{2,3}|调.{0,2}申请书|.{2,6}议书|.{0,2}[谅凉][解牌].{0,2}|.?民事赔偿协议书.?")) {
@@ -488,7 +488,7 @@ public class Document implements FileCode {
 						return proofOfService;
 					}
 					if (txt.matches(".?保证书.?|.*担保书|.?法庭笔录.?|.?庭审笔录.?|.?法庭审[理埋]笔录.?|.*审判笔录|.?开庭笔录.?"
-							+".?法庭审王里笔录.?|.?是否公开.?公开审理|.?是否公开.?不公开审理")) {
+							+".?法庭审[王壬]里笔录.?|.?是否公开.?公开审理|.?是否公开.?不公开审理")) {
 						if ((fileEndCheck(img, row, 0.2D)) || (endCheck(img, row))) {
 							return guarantee;
 						}
@@ -539,7 +539,7 @@ public class Document implements FileCode {
 						return MarkingNotice;
 					}
 
-					if (txt.matches(".*简易程序.*")) {
+					if (txt.matches(".*法院适用简易程序.*")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return SimpleProceduresApply;
 						}
@@ -721,7 +721,7 @@ public class Document implements FileCode {
 						return EvidenceHandlingProcedures;
 					}
 
-					if (txt.matches(".*受.?[里理]通知书.?|.?驳回申诉.?|.?受.?案件通知书.?")) {
+					if (txt.matches(".*受.?[里理]通知书.?|.?驳回申诉.?|.?受.{0,2}案件通知书.?")) {
 						return CaseAcceptanceNotice;
 					}
 
