@@ -359,7 +359,7 @@ public class Document implements FileCode {
 							+ "|亍聿师事.{1,4}所函|.{0,6}律师事.{1,3}函|.{0,6}律师事务.{0,4}|授[权衩杈]委.{2,6}"
 							+ "|.{0,4}身[份伯]证明.?|.*一[社祉]会信用代.*"
 							+ "|.{1,3}身.?号码[\\d]{7,}|.明|法人(代表)?.?[证正]明.{0,6}|.?授.{1,3}" + "|律师.?务所名称.{2,9}"
-							+ "|法律工作者证|组织机构代码证|统一社会信用代码|推荐信|法律服务所.{0,3}|.?委托书编号.?")) {
+							+ "|法律工作者证|组织机构代码证|.*[统脘]一[社仕]会信用代码.*|推荐信|法律服务所.{0,3}|.?委托书编号.?")) {
 						return identification;
 					}
 
@@ -491,7 +491,7 @@ public class Document implements FileCode {
 					if (txt.matches(".{0,3}延期审理.{0,5}"))
 						return "35";
 					if (txt.matches(".*讼费收.{0,2}|.*诉讼费专用票据.*|.?减.{0,2}交.*纳.*诉.*讼.?申请书.?|.?减.?免.?缓.?审批表.?"
-							+ "|.*一般缴款书.?")) {
+							+ "|.*收[入人].?般缴款书.*")) {
 						return cost;
 					}
 					if (txt.matches(
@@ -787,6 +787,10 @@ public class Document implements FileCode {
 					
 					if (txt.matches(".*诉讼保全案件移送表.?")) {
 						return LitigationPreservationCaseIsTransferredTable;
+					}
+					
+					if (txt.matches(".?协助执行通知书.?")) {
+						return AssistImplementationOfTheNotice;
 					}
 				}
 			}

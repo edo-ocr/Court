@@ -595,6 +595,11 @@ public class Main implements FileCode {
 				System.out.println(file.getName() + "——诉讼保全案件移送表");
 				break;
 
+			case AssistImplementationOfTheNotice:
+				writeFile(args[1], AssistImplementationOfTheNotice);
+				System.out.println(file.getName() + "——协助执行通知书");
+				break;				
+				
 			// -------------------------------------------------------------------
 			default:
 				if (Identification.check(img)) {

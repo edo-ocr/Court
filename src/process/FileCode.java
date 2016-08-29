@@ -128,5 +128,6 @@ public abstract interface FileCode {
 	public static final String LitigationRightsAndObligationsOfThisBook = "95";
 	public static final String UnderwritingNotes = "96";
 	public static final String LitigationPreservationCaseIsTransferredTable = "97";
+	public static final String AssistImplementationOfTheNotice = "98";	
 	
 }
