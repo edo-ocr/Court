@@ -289,7 +289,7 @@ public class Document implements FileCode {
 									txt = OCR.recognizeText(imgFile, "");
 								}
 								System.out.println(txt);
-								if (txt.matches(".{0,2}[裁截]决书")) {
+								if (txt.matches(".{0,2}[裁截]决书|.{0,1}仲[裁栽]{1,2}决书.?")) {
 									if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 										return "31";
 									}
@@ -322,7 +322,8 @@ public class Document implements FileCode {
 						}
 						return executionFront;
 					}
-					if (txt.matches(".{0,2}撤销.{2,6}|.{0,2}[攒撤撒]诉.*|.{0,3}[拆诉]申请.{0,3}")) {
+					if (txt.matches(".{0,2}撤销.{2,6}|.{0,2}[攒撤撒]诉.*|.{0,3}[拆诉]申请.{0,3}"
+							+ "|.?撤案申请.?")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return supersedeas;
 						}
@@ -428,7 +429,8 @@ public class Document implements FileCode {
 					if (txt.matches(".?执行通知书.{0,5}|.{3,8}发还裁决款审批表.?|.{0,5}收.?条")) {
 						return "33";
 					}
-					if (txt.matches(".*保全申请书.?|.*账户信息.?|.{0,3}矫正告知书.?|.{0,4}矫正人员.{2,5}通知单")) {
+					if (txt.matches(".*保全申请书.?|.*账户信息.?|.{0,3}矫正告知书.?|.{0,4}矫正人员.{2,5}通知单"
+							+ "|.?接受社区[矫娇]正保证书.?")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return "33";
 						}
@@ -444,7 +446,8 @@ public class Document implements FileCode {
 					if (txt.matches(".*执行工作日志.?"))
 						return "20";
 					if (txt.matches(
-							".{0,3}复议申请书.*|.{0,6}异议申请书.?|执行异议书.{0,4}|.*行.{0,3}申请书.{0,2}|申请执行书.{0,6}" + "|.{0,2}强制执行.*")) {
+							".{0,3}复议申请书.*|.{0,6}异议申请书.?|执行异议书.{0,4}|.*行.{0,3}申请书.{0,2}|申请{0,1}.?执行书.{0,6}"
+					      + "|.{0,2}强制执行.*")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return execution;
 						}
@@ -491,16 +494,17 @@ public class Document implements FileCode {
 					if (txt.matches(".{0,3}延期审理.{0,5}"))
 						return "35";
 					if (txt.matches(".*讼费收.{0,2}|.*诉讼费专用票据.*|.?减.{0,2}交.*纳.*诉.*讼.?申请书.?|.?减.?免.?缓.?审批表.?"
-							+ "|.*收[入人].?般缴款书.*")) {
+							+ "|.*收[入人].?般缴款书.*|.?[瑗缓].?减.?[兔免]诉讼.{0,1}审批表.?")) {
 						return cost;
 					}
 					if (txt.matches(
 							"邮件号码.*|.*投递并签收.*|.*邮.{1,2}号码:.*|运单.程|.*揽投员.*|.*[送达]达.{0,3}"
-							+ "|.*EMS.*" + "|.{0,6}网上寄件.?|.*送达.*送达.*|.?送达公告.?|.?送达案件登记表.?")) {
+							+ "|.*EMS.*" + "|.{0,6}网上寄件.?|.*送达.*送达.*|.?送达公告.?|.?送达案件登记表.?"
+									+ "|.?送达回证.?|受送达[人入].*")) {
 						return proofOfService;
 					}
 					if (txt.matches(".?保证书.?|.*担保书|.?法庭笔录.?|.?庭审笔录.?|.?法庭审[理埋]笔录.?|.*审判笔录|.?开庭笔录.?"
-							+".?法庭审[王壬]里笔录.?|.?是否公开.?公开审理|.?是否公开.?不公开审理")) {
+							+"|.?法庭审[王壬]里笔录.?|.?是否公开.?公开审理|.?是否公开.?不公开审理")) {
 						if ((fileEndCheck(img, row, 0.2D)) || (endCheck(img, row))) {
 							return guarantee;
 						}
@@ -527,7 +531,7 @@ public class Document implements FileCode {
 					}
 
 					if (txt.matches(".{1,7}案件.{1,7}流.*管理.{1,3}|.*立案登记表.{1,6}|.?立案审批表.?|.*案件.*审判流.*"
-							+ "|.*立案.*理.*息|.*案件.*立案.*审.*")) {
+							+ "|.*立案.*理.*息|.*案件.*立案.*审.*|.?执行案件流程管理情况.?")) {
 
 						return CaseFlow;
 					}
@@ -566,7 +570,7 @@ public class Document implements FileCode {
 					if (txt.matches(".{0,2}司法公.{0,2}知书.?")) {
 						return PublicationOfThisBookJusticeFront;
 					}
-					if (txt.matches(".{0,3}监督.{0,2}|.*诉讼[冈风凤]险.{0,5}")) {
+					if (txt.matches(".{0,3}监督.{0,2}|.*廉政监督卡|.*诉讼[冈风凤]险.{0,5}")) {
 						if ((fileEndCheck(img, row, 0.25D)) || (endCheck(img, row))) {
 							return PublicationOfThisBookJustice;
 						}
@@ -789,7 +793,7 @@ public class Document implements FileCode {
 						return LitigationPreservationCaseIsTransferredTable;
 					}
 					
-					if (txt.matches(".?协助执行通知书.?")) {
+					if (txt.matches(".?协助[执扰]行通知书.?")) {
 						return AssistImplementationOfTheNotice;
 					}
 				}
